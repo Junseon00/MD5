@@ -53,6 +53,28 @@ public class screen4 extends AppCompatActivity {
     }
 
 
+   public void popup1(View v){
+        //수정 버튼. 팝업 띄우기.
+        Intent intent = new Intent(this, Screen5.class);
+        //intent.putExtra("data", "Test Popup");
+        //startActivityForResult(intent, 1);
+       startActivity(intent); //자료는 못 주고받음
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                //데이터 받기
+                String result = data.getStringExtra("result");
+                //txtResult.setText(result);
+            }
+        }
+    }
+
+
 
 
 }
