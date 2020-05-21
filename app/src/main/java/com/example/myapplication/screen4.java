@@ -5,6 +5,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -21,10 +22,12 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import android.content.SharedPreferences;
 
+import java.util.Calendar;
+import android.app.AlarmManager;
 public class screen4 extends AppCompatActivity {
 
 Switch sw;
-
+private AlarmManager alarmManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,15 +122,18 @@ public void addTime(View view){
     }//end return4
 
 //스위치 관련 코드
-    private void CheckState(){
+    private void CheckState() {
+        Intent intent = new Intent(this, Alarm_Receiver.class);
+        PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
         TextView tv = (TextView)findViewById(R.id.tv);
+
         if(sw.isChecked()) {
+            ///////text, shared preference설정////////
             tv.setText("알람이 실행중입니다.");
             SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
             //key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
             String text = pref.getString("alarm","");
             SharedPreferences.Editor editor = pref.edit();
-
             if(text == ""){
                 //알람 on을 넣어준다.
                 editor.putString("alarm","on");
@@ -138,8 +144,20 @@ public void addTime(View view){
                 editor.putString("alarm","on");
                 editor.commit();
             }
+            //////////////////////////////////////////
 
             //서비스 실행
+            Calendar calendar = Calendar.getInstance();
+//        while( time+i가 null이 될 때 까지){
+//        int hour = ~;
+//        int minute = ~;
+//        calendar.set(Calendar.HOUR_OF_DAY, hour);
+//        calendar.set(Calendar.MINUTE, minute);
+//        calendar.set(Calendar.SECOND, 0);
+//        calendar.set(Calendar.MILLISECOND, 0);
+//        // 지정한 시간에 매일 알림
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),  AlarmManager.INTERVAL_DAY, pIntent);
+//    } //end of while
 
         }
         else{ //알람이 꺼져있을 때
@@ -150,6 +168,11 @@ public void addTime(View view){
             editor.putString("alarm","off");
             editor.commit();
             //여기에는 서비스 종료 코드만 있으면 된다.
+            Toast.makeText(screen4.this,"Alarm 종료",Toast.LENGTH_SHORT).show();
+            // 알람매니저 취소
+            alarmManager.cancel(pIntent);
+
+
         }
     }
 
