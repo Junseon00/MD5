@@ -50,7 +50,15 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="시간 추가하기" />
+            android:text="시간 추가하기"
+            android:onClick="addTime"/>
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="뒤로 돌아가기"
+            android:onClick="return4"/>
 
 
     </LinearLayout>

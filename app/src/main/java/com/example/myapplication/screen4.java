@@ -19,6 +19,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import android.content.SharedPreferences;
 
 public class screen4 extends AppCompatActivity {
 
@@ -31,25 +32,41 @@ public class screen4 extends AppCompatActivity {
 
         // 리사이클러뷰에 표시할 데이터 리스트 생성.
         ArrayList<String> list = new ArrayList<>();
-        for (int i=0; i<100; i++) {
-            list.add(String.format("TEXT %d", i)) ;
+
+        ////test용
+        //for (int i=0; i<100; i++) {
+        //    list.add(String.format("TEXT %d", i)) ;
+        //}
+
+        SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
+
+
+
+        //key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
+        String text = pref.getString("timeselected","");
+        if(text == ""){
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putString("timeselected", "yes"); //파일이 수정된 적 있는지 확인함
+            editor.putString("time1", "09:00");
+            editor.putString("time2", "12:00");
+            editor.putString("time3", "17:00");
+
+            editor.commit();
+
         }
 
-//
-//        ArrayList<String> list = new ArrayList<>();
-//        SharedPreferences sf = getSharedPreferences("timeFile",MODE_PRIVATE);
-//        //text라는 key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
-//        String text = sf.getString("timeselected","");
-//        if(text != ""){
-//            //저장된 시간 불러오기
-//
-//        }
-//        else{
-//            list.add("08:00");
-//            list.add("12:00");
-//            list.add("06:00");
-//
-//        }
+
+        //preference에 저장된 시간 불러오기
+        String temp = pref.getString("time1","");
+        int i=1;
+        //if()//전부 다 삭제한 상태
+        while(temp != ""){
+            list.add(temp);
+            i +=1;
+            temp = pref.getString("time"+i,"");
+        }
+
+
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         RecyclerView recyclerView = findViewById(R.id.recycler1) ;
@@ -62,7 +79,18 @@ public class screen4 extends AppCompatActivity {
     }
 
 
+public void addTime(View view){
+    Intent intent = new Intent(this, screen5.class);
+    startActivity(intent);
 
+}//end of addtime
+
+    public void return4(View v){
+        Intent intent1 = new Intent(this,MainActivity.class);
+        startActivity(intent1);
+        
+
+    }//end return4
 
 
 }
