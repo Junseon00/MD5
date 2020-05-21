@@ -39,96 +39,22 @@
             android:layout_marginBottom="100dp"
             />
 
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-            <Switch
-                android:id="@+id/switch2"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="시간1" />
+        </androidx.recyclerview.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_weight="1"
-                android:text=" 09:00" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="시간 추가하기" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="시간 설정"
-                android:onClick="popup1"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Switch
-                android:id="@+id/switch6"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="시간2" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_weight="1"
-                android:text=" 12:00" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="시간 설정" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Switch
-                android:id="@+id/switch7"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="시간3" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_weight="1"
-                android:text=" 18:00" />
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="시간설정" />
-        </LinearLayout>
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
