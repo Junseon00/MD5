@@ -17,13 +17,14 @@ import java.util.Calendar;
 
 public class screen5 extends AppCompatActivity {
 
-    TimePicker timepicker=(TimePicker) findViewById(R.id.timePicker);
+    TimePicker timepicker;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen5);
+        timepicker=(TimePicker) findViewById(R.id.timePicker);
 
 
 
