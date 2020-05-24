@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/lay1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="300dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/myP"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="마이\n페이지"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/main"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="메인\n화면"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</FrameLayout>

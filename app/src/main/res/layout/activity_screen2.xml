@@ -8,12 +8,25 @@
     tools:context=".screen2">
 
 
+    <Button
+        android:id="@+id/bt9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="10dp"
+        android:text="뒤로"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
@@ -25,59 +38,59 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="100dp"
                 android:text="기본정보"
-                android:layout_gravity="center"
                 android:textSize="30sp" />
 
             <EditText
                 android:id="@+id/et_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="50dp"
                 android:ems="10"
                 android:hint="아이디"
-                android:layout_gravity="center"
                 android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/et_pass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:hint="비밀번호"
-                android:layout_gravity="center"
                 android:inputType="textPassword" />
 
             <EditText
                 android:id="@+id/et_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:hint="이름"
-                android:layout_gravity="center"
                 android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/et_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:hint="이메일"
-                android:layout_gravity="center"
                 android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="100dp"
                 android:text="추가정보"
-                android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
@@ -85,17 +98,17 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:text="본인이 가진 알러지를 알려주세요"
-                android:layout_gravity="center"
                 android:textSize="20sp" />
 
             <LinearLayout
                 android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
                 <CheckBox
@@ -118,7 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10sp"
-                    android:text="견과류"/>
+                    android:text="견과류" />
 
                 <CheckBox
                     android:id="@+id/checkBox3"
@@ -149,8 +162,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
