@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,14 +16,18 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import android.content.SharedPreferences;
 
 import java.util.Calendar;
+import java.util.List;
+
 import android.app.AlarmManager;
 public class screen4 extends AppCompatActivity {
 
@@ -147,17 +152,7 @@ public void addTime(View view){
             //////////////////////////////////////////
 
             //서비스 실행
-            Calendar calendar = Calendar.getInstance();
-//        while( time+i가 null이 될 때 까지){
-//        int hour = ~;
-//        int minute = ~;
-//        calendar.set(Calendar.HOUR_OF_DAY, hour);
-//        calendar.set(Calendar.MINUTE, minute);
-//        calendar.set(Calendar.SECOND, 0);
-//        calendar.set(Calendar.MILLISECOND, 0);
-//        // 지정한 시간에 매일 알림
-//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),  AlarmManager.INTERVAL_DAY, pIntent);
-//    } //end of while
+            alarmset();
 
         }
         else{ //알람이 꺼져있을 때
@@ -170,13 +165,70 @@ public void addTime(View view){
             //여기에는 서비스 종료 코드만 있으면 된다.
             Toast.makeText(screen4.this,"Alarm 종료",Toast.LENGTH_SHORT).show();
             // 알람매니저 취소
-            alarmManager.cancel(pIntent);
+            unalarm();
 
 
         }
     }
 
 
+public void alarmset(){
+        //알람을 실행시키는 코드
 
+    AlarmManager alarm_manager;
+    // 알람매니저 설정
+    alarm_manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+    //broadcast receiver 인텐트 설정
+    final Intent my_intent = new Intent(this, Alarm_Receiver.class);
+
+    //모든 시간을 다 불러와 알람에 설정
+    int i=1;
+    SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
+    String times= pref.getString("time1","");
+
+    while(times != ""){
+        //매번 다른 알람 시간을 설정하기 위해 ID(매번 다른 정수 등록) = i
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), i , my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        int hour;
+        int minute;
+
+        //시간을 :를 구분자로 가져온다.
+        List<String> tarray= Arrays.asList(times.split(":"));
+        hour=Integer.parseInt(tarray.get(0));
+        minute = Integer.parseInt(tarray.get(1));
+
+
+        //캘린더에 시간, 분, 초, 밀리초 설정
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+
+        // 알람셋팅
+        // 지정한 시간에 매일 알림
+        alarm_manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),  AlarmManager.INTERVAL_DAY, pendingIntent);
+
+        //다음 시간 불러오기
+        i+=1;
+        times = pref.getString("time"+i,"");
+    }
+
+
+
+}
+
+
+public void unalarm(){
+        AlarmManager alarm_manager;
+        // 알람매니저 설정
+        alarm_manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        Intent intent = new Intent(this, Alarm_Receiver.class);
+        PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        alarm_manager.cancel(pIntent);
+    }//알람 해제
 
 }

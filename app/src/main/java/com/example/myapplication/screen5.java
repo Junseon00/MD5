@@ -52,20 +52,19 @@ public void add(View v){
     String time = "";
    int getHour = 0;
    int getMinute = 0;
-    getHour = timepicker.getCurrentHour();
-    getMinute = timepicker.getCurrentMinute();
+
 
     //호환성 다룰때 추가 할 코드.
-//    if(Build.VERSION.SDK_INT < 23)
-//    {
-//        getHour = timepicker.getCurrentHour();
-//        getMinute = timepicker.getCurrentMinute();
-//    }
-//    else
-//    {
-//        getHour = timepicker.getHour();
-//        getMinute = timepicker.getMinute();
-//    }
+    if(Build.VERSION.SDK_INT < 23)
+    {
+        getHour = timepicker.getCurrentHour();
+        getMinute = timepicker.getCurrentMinute();
+    }
+    else
+    {
+        getHour = timepicker.getHour();
+        getMinute = timepicker.getMinute();
+    }
 
     time= getHour + ":" + getMinute;
     editor.putString("time"+i, time);

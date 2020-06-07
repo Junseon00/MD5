@@ -52,13 +52,12 @@ public class RingtonePlayingService extends Service{
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        //우리는 string에서 받아오지 않음.
-        //String getState = intent.getExtras().getString("state");
+        //스트링 받아오려면 여기에 삽입
 
-        //내가 지금 알람을 켠상탠지 아닌지 확인하기.
         SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
         //key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
         String text = pref.getString("alarm","");
+
         assert text != null;
         switch (text) {
             case "on":
