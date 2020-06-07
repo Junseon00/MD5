@@ -48,7 +48,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="50dp"
                 android:ems="10"
                 android:hint="아이디"
@@ -100,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                android:text="본인이 가진 알러지를 알려주세요"
+                android:text="본인이 다음 사항에 해당되면 체크해주세요"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -117,28 +116,41 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10sp"
                     android:checked="true"
-                    android:text="자두" />
+                    android:text="고혈압" />
 
                 <CheckBox
                     android:id="@+id/checkBox2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10sp"
-                    android:text="복숭아" />
+                    android:text="임신중" />
 
                 <CheckBox
                     android:id="@+id/checkBox4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10sp"
-                    android:text="견과류" />
+                    android:text="당뇨" />
 
                 <CheckBox
                     android:id="@+id/checkBox3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp"
+                    android:text="기타" />
+
+                <EditText
+                    android:id="@+id/checkbox3_etc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="30sp"
-                    android:text="우유" />
+                    android:hint="기타 특기사항을 입력해주세요"
+                    android:inputType="textPersonName" />
+
+
+
+
+
 
                 <Button
                     android:id="@+id/button1"
