@@ -2,39 +2,43 @@ package com.example.myapplication;
 
 //"하나의 row"가 담기는 그릇이 됨.
 public class User {
-    int id;
+    String id;
     String password;
-    String name;
-    int age;
+    String hashedpw;
+    String phone;
+    String birth;
 
     public User(){
 
     }
+
 
     @Override
     public String toString() {
         return "User{" +
                 ", id=" + id +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", age='" + age + '\'' +
+                ", hasedpw='" + hashedpw + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birth='" + birth + '\'' +
                 '}';
     }
 
-    public User(int id, String password, String name, int age, String token) {
+    public User(String id, String password, String hashedpw, String phone, String birth) {
         this.id = id;
         this.password = password;
-        this.name = name;
-        this.age = age;
+        this.hashedpw = hashedpw;
+        this.phone = phone;
+        this.birth = birth;
     }
 
     private String token;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -46,20 +50,28 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getHashedpw() {
+        return hashedpw;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHashedpw(String name) {
+        this.hashedpw = hashedpw;
     }
 
-    public int getAge() {
-        return age;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setNumber(int age) {
-        this.age = age;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getbirth() {
+        return birth;
+    }
+
+    public void setbirth(String birth) {
+        this.birth = birth;
     }
 
 //    public String getOs() {

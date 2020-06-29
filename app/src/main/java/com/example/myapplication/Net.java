@@ -19,8 +19,10 @@ public class Net {
     }
 
 
+    //ngrok2
+
     private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://hazefor.dothome.co.kr")
+            .baseUrl("http://32b7487bcaa5.ngrok.io")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     retroAPI memberFactoryIm; //--------------------------------------- B

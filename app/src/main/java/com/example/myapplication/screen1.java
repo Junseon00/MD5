@@ -51,39 +51,66 @@ public class screen1 extends AppCompatActivity {
         });
 
 
+
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // EditText에 현재 입력되어있는 값을 get해온다.
-                String id = et_id.getText().toString();
-                String pass = et_pass.getText().toString();
+
+
+                final String id = et_id.getText().toString();
+                final String pass = et_pass.getText().toString();
 
 
                 if(TextUtils.isEmpty(id)){
-                    et_id.setError("아이디를 입력하세요.");
+                    et_id.setError("id error");
                 }
                 if(TextUtils.isEmpty(pass)){
-                    et_pass.setError("비밀번호를 입력하세요.");
+                    et_pass.setError("pwpw error pw");
                 }
 
                 if(!TextUtils.isEmpty(id) && !TextUtils.isEmpty(pass)) {
 
-                    Call<List<User>> res = Net.getInstance().getMemberFactory().login(id, pass);
+                    Call<List<User>> res = Net.getInstance().getMemberFactory().user(id, pass);
                     res.enqueue(new Callback<List<User>>() {
                         @Override
                         public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                             if (response.body() != null) { //null 뿐 아니라 오류 값이 들어올 때도 처리해줘야 함.
                                 List<User> users = response.body();
-                                Toast.makeText(getApplicationContext(),"Main 통신"+response.body().get(0).toString(), Toast.LENGTH_SHORT).show();
+
+                                String rid = users.get(0).toString();
+                                String rpass = users.get(1).toString();
+
+                                Toast.makeText(getApplicationContext(),"good"+response.body().get(0).toString(), Toast.LENGTH_SHORT).show();
+
+                                if(id.equals(rid)){
+                                    if(pass.equals(rpass)){
+                                        Intent intent= new Intent(screen1.this, MainActivity.class);
+                                        startActivity(intent);
+                                    } else{
+                                        Toast.makeText(getApplicationContext(),"비밀번호 틀림", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+
+
+
+
+
+
+
+
+
 
                             } else {
-                                Toast.makeText(getApplicationContext(),"Main 통신 실패 1 response 내용이 없음", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"error1", Toast.LENGTH_SHORT).show();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<List<User>> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(),"Main 통신"+"실패 2 서버 에러", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"error2", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
