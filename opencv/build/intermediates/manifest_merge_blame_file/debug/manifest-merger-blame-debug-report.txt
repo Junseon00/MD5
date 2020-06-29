@@ -6,8 +6,14 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
+<<<<<<< HEAD
 8-->C:\project\MD5\MD5\opencv\java\AndroidManifest.xml
 9        android:targetSdkVersion="26" />
 9-->C:\project\MD5\MD5\opencv\java\AndroidManifest.xml
+=======
+8-->C:\Users\yorco\AndroidStudioProjects\gradua\MD5\opencv\java\AndroidManifest.xml
+9        android:targetSdkVersion="26" />
+9-->C:\Users\yorco\AndroidStudioProjects\gradua\MD5\opencv\java\AndroidManifest.xml
+>>>>>>> 06bc5f8ce73ca0e0a29372d4a7af6aebad660de4
 10
 11</manifest>

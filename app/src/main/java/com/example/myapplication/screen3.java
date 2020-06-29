@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 
@@ -54,4 +56,12 @@ public class screen3 extends AppCompatActivity {
 
 
     }
+
+    public void toCamera(View v){
+        Intent intent = new Intent(this,screen7camera.class );
+        startActivity(intent);
+
+    }//to the camera activity
+
+
 }
