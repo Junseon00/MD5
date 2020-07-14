@@ -3,17 +3,25 @@ package com.example.myapplication;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.widget.Toast;
 
 public class RingtonePlayingService extends Service{
 
@@ -30,24 +38,12 @@ public class RingtonePlayingService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
+        Intent intent = new Intent(this, MainActivity.class);
 
-        if (Build.VERSION.SDK_INT >= 26) {
-            String CHANNEL_ID = "default";
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
-                    "Channel human readable title",
-                    NotificationManager.IMPORTANCE_DEFAULT);
+        //알람울리기
+        notif();
 
-            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
 
-            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setContentTitle("알람시작")
-                    .setContentText("알림 서비스를 실행합니다..")
-                    .setSmallIcon(R.mipmap.ic_launcher)
-
-                    .build();
-
-            startForeground(1, notification);
-        }
     }
 
     @Override
@@ -79,6 +75,12 @@ public class RingtonePlayingService extends Service{
 
             this.isRunning = true;
             this.startId = 0;
+
+            //팝업
+            //didyoueat();
+
+
+
         }
 
 
@@ -108,6 +110,7 @@ public class RingtonePlayingService extends Service{
 
             this.isRunning = true;
             this.startId = 1;
+
         }
 
         else {
@@ -122,4 +125,69 @@ public class RingtonePlayingService extends Service{
         Log.d("onDestory() 실행", "서비스 파괴");
 
     }
+
+    //약을 먹었는지 체크하기 전애 20초의 시간을 준다
+    public void didyoueat(){
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            //기다린 후 팝업을 띄운다.
+            public void run() {
+
+                AlertDialog.Builder oDialog = new AlertDialog.Builder(RingtonePlayingService.this,
+                        android.R.style.Theme_DeviceDefault_Light_Dialog);
+
+                oDialog.setMessage("약을 복용 하셨습니까? 이 정보는 기록됩니다.")
+                        .setTitle("복용 여부 확인 메세지")
+                        .setPositiveButton("아니오", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                Log.i("Dialog", "약을 복용하지 않았음");
+                                //시간, flase를 반환함.
+                            }
+                        })
+
+
+                        .setNeutralButton("예", new DialogInterface.OnClickListener()
+                        {
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                Log.i("Dialog", "약을 복용함");
+                               //시간,true를 반환
+                            }
+                        })
+                        .setCancelable(false) // 백버튼으로 팝업창이 닫히지 않도록 한다.
+
+
+                        .show();
+
+
+            }
+        }, 20000);  // 20초
+    }
+
+//헤드업 노티피 케이션. 보이기 쉽게 표시
+    public void notif(){
+        if (Build.VERSION.SDK_INT >= 26) {
+            String CHANNEL_ID = "default";
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_HIGH);
+
+            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+
+            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentTitle("의약품 복용 시간 안내")
+                    .setContentText("의약품을 복용하실 시간입니다.")
+                    .setSmallIcon(R.mipmap.ic_launcher)
+
+                    .build();
+
+            startForeground(1, notification);
+        }
+    }
+
 }

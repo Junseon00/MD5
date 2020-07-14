@@ -44,7 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="alarm"
-            android:text="복용 시간 알람 서비스" />
+            android:text="복용 시간 알람 서비스"
+            />
 
         <Button
             android:id="@+id/button5"
