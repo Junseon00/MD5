@@ -44,6 +44,7 @@ public class RingtonePlayingService extends Service{
         notif();
 
 
+
     }
 
     @Override
@@ -77,7 +78,7 @@ public class RingtonePlayingService extends Service{
             this.startId = 0;
 
             //팝업
-            //didyoueat();
+            didyoueat();
 
 
 
@@ -133,36 +134,22 @@ public class RingtonePlayingService extends Service{
         handler.postDelayed(new Runnable() {
             //기다린 후 팝업을 띄운다.
             public void run() {
+                //팝업 액티비티 호출
+                Intent intent = new Intent(RingtonePlayingService.this, PopupActivity.class);
+                //intent.putExtra("data", "Test Popup"); //데이터 전달
+                startActivity(intent);
+                //startActivityForResult(intent, 1);
 
-                AlertDialog.Builder oDialog = new AlertDialog.Builder(RingtonePlayingService.this,
-                        android.R.style.Theme_DeviceDefault_Light_Dialog);
-
-                oDialog.setMessage("약을 복용 하셨습니까? 이 정보는 기록됩니다.")
-                        .setTitle("복용 여부 확인 메세지")
-                        .setPositiveButton("아니오", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
-                                Log.i("Dialog", "약을 복용하지 않았음");
-                                //시간, flase를 반환함.
-                            }
-                        })
-
-
-                        .setNeutralButton("예", new DialogInterface.OnClickListener()
-                        {
-                            public void onClick(DialogInterface dialog, int which)
-                            {
-                                Log.i("Dialog", "약을 복용함");
-                               //시간,true를 반환
-                            }
-                        })
-                        .setCancelable(false) // 백버튼으로 팝업창이 닫히지 않도록 한다.
-
-
-                        .show();
-
+//                @Override
+//                protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//                    if(requestCode==1){
+//                        if(resultCode==RESULT_OK){
+//                            //데이터 받기
+//                            String result = data.getStringExtra("result");
+//                            txtResult.setText(result);
+//                        }
+//                    }
+//                }//END OF ONactivity result
 
             }
         }, 20000);  // 20초

@@ -43,10 +43,7 @@ private AlarmManager alarmManager;
         // 리사이클러뷰에 표시할 데이터 리스트 생성.
         ArrayList<String> list = new ArrayList<>();
 
-        ////test용
-        //for (int i=0; i<100; i++) {
-        //    list.add(String.format("TEXT %d", i)) ;
-        //}
+        
         SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
         //key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
         String text = pref.getString("timeselected","");

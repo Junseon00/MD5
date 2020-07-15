@@ -10,6 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
+
 public class screen7camera extends AppCompatActivity {
 
     ImageView iv;
@@ -44,9 +51,10 @@ public class screen7camera extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         iv= (ImageView)findViewById(R.id.iv);
-        iv.setImageURI(data.getData()); //getData로 이미지 불러오기.
+        iv.setImageURI(data.getData());
+        //getData로 이미지 불러오기.
 
-        //서버로 보낼 수 있게
+        //서버로 보낼 수 있게 버튼 활성화
         send =(Button)findViewById(R.id.button10);
         send.setVisibility(View.VISIBLE);
 
@@ -61,6 +69,16 @@ public class screen7camera extends AppCompatActivity {
         //사진 찍기는 이제 다시 찍기로 설정
         takephoto =(Button)findViewById(R.id.button9);
         takephoto.setText("사진 다시 찍기");
+
+
+
+    }
+
+    //서버로 이미지를 보내는 코드
+    public void sendImage(){
+        Retrofit retrofit;
+        retroAPI apiService;
+
 
 
 

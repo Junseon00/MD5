@@ -61,7 +61,8 @@
             android:padding="16dp"
             android:text="예"
             android:textColor="#ff7a00"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:onClick="dideat"/>
 
         <Button
             android:id="@+id/button12"
@@ -71,7 +72,8 @@
             android:background="#ffff"
             android:gravity="center"
             android:padding="16dp"
-            android:text="아니요" />
+            android:text="아니요"
+            android:onClick="didnteat"/>
     </LinearLayout>
     <!--// 닫기 버튼 -->
 </LinearLayout>
