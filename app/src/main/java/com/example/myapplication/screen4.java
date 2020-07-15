@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +13,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -43,29 +49,22 @@ private AlarmManager alarmManager;
         // 리사이클러뷰에 표시할 데이터 리스트 생성.
         ArrayList<String> list = new ArrayList<>();
 
-        
-        SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
-        //key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
-        String text = pref.getString("timeselected","");
-        if(text == ""){
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putString("timeselected", "yes"); //파일이 수정된 적 있는지 확인함
-            editor.putString("time1", "09:00");
-            editor.putString("time2", "12:00");
-            editor.putString("time3", "17:00");
+        //db에서 모든 시간 다 불러와서 list.add( string형식 )
+        MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase(); //wrtie이네?!
+        Cursor cursor = db.rawQuery("select hour,minute from times order by _id desc limit 1",null);
+        //더 필요한 기능이 있으면 cursor객체 메소드 더 알아보기.
 
-            editor.commit();
-        }
+        String temp = ""; //list에 추가할 string을 잠시 담는다.
 
-        //preference에 저장된 시간 불러오기
-        String temp = pref.getString("time1","");
-        int i=1;
-        //if()//전부 다 삭제한 상태
-        while(temp != ""){
+        while (cursor.moveToNext()){
+            //hour은 columindex 0 minute은 columindex
+            temp = cursor.getString(0) + ":" + cursor.getString(1);
             list.add(temp);
-            i +=1;
-            temp = pref.getString("time"+i,"");
         }
+
+        db.close();//db닫기
+
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         RecyclerView recyclerView = findViewById(R.id.recycler1) ;
@@ -80,8 +79,12 @@ private AlarmManager alarmManager;
         /////////////////스위치 관련 연산//////////////////////
         sw =(Switch)findViewById(R.id.switch1);
         TextView tv = (TextView)findViewById(R.id.tv);
+
+        //sharedpreference만들기.
+        SharedPreferences sf = getSharedPreferences("sFile",MODE_PRIVATE);//해당 앱에서만 사용
+
         ///실행 유무 표시
-        String set = pref.getString("alarm","");
+        String set = sf.getString("alarm","");
         if(set == "off"){
             tv.setText("알람이 실행중이 아닙니다.");
             sw.setChecked(false);
@@ -130,9 +133,10 @@ public void addTime(View view){
         TextView tv = (TextView)findViewById(R.id.tv);
 
         if(sw.isChecked()) {
+            Toast.makeText(screen4.this,"Alarm 실행",Toast.LENGTH_SHORT).show();
             ///////text, shared preference설정////////
             tv.setText("알람이 실행중입니다.");
-            SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
+            SharedPreferences pref = getSharedPreferences("sFile", MODE_PRIVATE);
             //key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
             String text = pref.getString("alarm","");
             SharedPreferences.Editor editor = pref.edit();
@@ -179,22 +183,23 @@ public void alarmset(){
     //broadcast receiver 인텐트 설정
     final Intent my_intent = new Intent(this, Alarm_Receiver.class);
 
-    //모든 시간을 다 불러와 알람에 설정
-    int i=1;
-    SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
-    String times= pref.getString("time1","");
 
-    while(times != ""){
+    //db에서 모든 시간 다 불러와 DB에 설정
+    MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(this);
+    SQLiteDatabase db = helper.getWritableDatabase(); //wrtie이네?!
+    Cursor cursor = db.rawQuery("select hour,minute from times order by _id desc limit 1",null);
+
+    int i=1;
+    while(cursor.moveToNext()){
         //매번 다른 알람 시간을 설정하기 위해 ID(매번 다른 정수 등록) = i
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), i , my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         int hour;
         int minute;
 
-        //시간을 :를 구분자로 가져온다.
-        List<String> tarray= Arrays.asList(times.split(":"));
-        hour=Integer.parseInt(tarray.get(0));
-        minute = Integer.parseInt(tarray.get(1));
+        //시간을 가져온다.
+        hour=Integer.parseInt(cursor.getString(0));
+        minute = Integer.parseInt(cursor.getString(1));
 
 
         //캘린더에 시간, 분, 초, 밀리초 설정
@@ -211,7 +216,6 @@ public void alarmset(){
 
         //다음 시간 불러오기
         i+=1;
-        times = pref.getString("time"+i,"");
     }
 
 
@@ -228,4 +232,9 @@ public void unalarm(){
         alarm_manager.cancel(pIntent);
     }//알람 해제
 
+
+
+
 }
+
+
