@@ -18,6 +18,7 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -52,10 +53,11 @@ private AlarmManager alarmManager;
         //db에서 모든 시간 다 불러와서 list.add( string형식 )
         MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase(); //wrtie이네?!
-        Cursor cursor = db.rawQuery("select hour,minute from times order by _id desc limit 1",null);
+        Cursor cursor = db.rawQuery("select hour,minute from times order by _id",null);
         //더 필요한 기능이 있으면 cursor객체 메소드 더 알아보기.
 
         String temp = ""; //list에 추가할 string을 잠시 담는다.
+        Log.d("screen4_cursorlength","curcor 질의 결과:"+Integer.toString(cursor.getCount()));
 
         while (cursor.moveToNext()){
             //hour은 columindex 0 minute은 columindex
@@ -187,7 +189,7 @@ public void alarmset(){
     //db에서 모든 시간 다 불러와 DB에 설정
     MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(this);
     SQLiteDatabase db = helper.getWritableDatabase(); //wrtie이네?!
-    Cursor cursor = db.rawQuery("select hour,minute from times order by _id desc limit 1",null);
+    Cursor cursor = db.rawQuery("select hour,minute from times order by _id",null);
 
     int i=1;
     while(cursor.moveToNext()){
@@ -218,7 +220,7 @@ public void alarmset(){
         i+=1;
     }
 
-
+    Log.d("screen4_arlarm", "alarm set 완료");
 
 }
 

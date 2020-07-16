@@ -16,6 +16,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -133,6 +134,7 @@ public class RingtonePlayingService extends Service{
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             //기다린 후 팝업을 띄운다.
+            @RequiresApi(api = Build.VERSION_CODES.O)
             public void run() {
                 //팝업 액티비티 호출
                 Intent intent = new Intent(RingtonePlayingService.this, PopupActivity.class);
@@ -150,6 +152,24 @@ public class RingtonePlayingService extends Service{
 //                        }
 //                    }
 //                }//END OF ONactivity result
+
+                String CHANNEL_ID = "default2";
+                NotificationChannel channel2 = new NotificationChannel(CHANNEL_ID,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_HIGH);
+
+                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel2);
+
+                Notification notification = new NotificationCompat.Builder(RingtonePlayingService.this, CHANNEL_ID)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setContentTitle("의약품을 복용 하셨습니까?")
+                        .setContentText("20초가 지났습니다..")
+                        .setSmallIcon(R.mipmap.ic_launcher)
+
+                        .build();
+
+                startForeground(1, notification);
+
 
             }
         }, 20000);  // 20초

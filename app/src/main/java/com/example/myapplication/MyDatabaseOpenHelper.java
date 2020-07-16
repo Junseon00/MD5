@@ -23,15 +23,17 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //앱 설치후 한번만 작동!!!!
-        String createSQL = "create table times"+"(_id integer primary key autoincrement,"+
-                "hour"+"minute"+"memo)";
+        String createSQL = "CREATE TABLE times (" + "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "hour TEXT," +
+                "minute TEXT," +
+                "memo TEXT);";
+
         //칼럼은 _id,hour,minute,memo
         db.execSQL(createSQL);
 
         //이렇게 해도 되겠지?
-        db.execSQL("insert into times (hour,minute) values(8,0)");
-        db.execSQL("insert into times (hour,minute) values(12,30)");
-        db.execSQL("insert into times (hour,minute) values(18,0)");
+        db.execSQL("insert into times (hour,minute) values(8,0),(12,30),(18,0)");
+
 
     }
 
