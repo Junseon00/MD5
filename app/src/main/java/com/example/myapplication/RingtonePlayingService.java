@@ -52,7 +52,7 @@ public class RingtonePlayingService extends Service{
     public int onStartCommand(Intent intent, int flags, int startId) {
         //스트링 받아오려면 여기에 삽입
 
-        SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("sFile", MODE_PRIVATE);
         //key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
         String text = pref.getString("alarm","");
 
@@ -74,7 +74,7 @@ public class RingtonePlayingService extends Service{
 
             mediaPlayer = MediaPlayer.create(this,R.raw.ringtone);
             mediaPlayer.start();
-
+            Log.d("mediaplayeron","on");
             this.isRunning = true;
             this.startId = 0;
 
@@ -140,7 +140,8 @@ public class RingtonePlayingService extends Service{
                 Intent intent = new Intent(RingtonePlayingService.this, PopupActivity.class);
                 //intent.putExtra("data", "Test Popup"); //데이터 전달
                 startActivity(intent);
-                //startActivityForResult(intent, 1);
+                Log.d("popup","2초 후 popup 실행");
+                //((RingtonePlayingService) mContext).startActivityForResult(intent, 1);
 
 //                @Override
 //                protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -153,26 +154,10 @@ public class RingtonePlayingService extends Service{
 //                    }
 //                }//END OF ONactivity result
 
-                String CHANNEL_ID = "default2";
-                NotificationChannel channel2 = new NotificationChannel(CHANNEL_ID,
-                        "Channel human readable title",
-                        NotificationManager.IMPORTANCE_HIGH);
-
-                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel2);
-
-                Notification notification = new NotificationCompat.Builder(RingtonePlayingService.this, CHANNEL_ID)
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                        .setContentTitle("의약품을 복용 하셨습니까?")
-                        .setContentText("20초가 지났습니다..")
-                        .setSmallIcon(R.mipmap.ic_launcher)
-
-                        .build();
-
-                startForeground(1, notification);
 
 
             }
-        }, 20000);  // 20초
+        }, 2000);  // 2초
     }
 
 //헤드업 노티피 케이션. 보이기 쉽게 표시
@@ -186,7 +171,7 @@ public class RingtonePlayingService extends Service{
             ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
 
             Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setContentTitle("의약품 복용 시간 안내")
                     .setContentText("의약품을 복용하실 시간입니다.")
                     .setSmallIcon(R.mipmap.ic_launcher)
