@@ -38,5 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void calender(View v){
+        Intent it = new Intent(this,screen8calender.class);
+        startActivity(it);
+    }
+
 }
 

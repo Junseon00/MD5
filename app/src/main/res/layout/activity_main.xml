@@ -39,6 +39,14 @@
             android:text="내 과거 의약 기록 보기" />
 
         <Button
+            android:id="@+id/button14"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="건강 달력"
+            android:onClick="calender"/>
+
+        <Button
             android:id="@+id/button4"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -54,5 +62,12 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:text="내 정보 수정하기" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="로그아웃" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
