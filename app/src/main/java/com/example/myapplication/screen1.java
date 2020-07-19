@@ -77,10 +77,19 @@ public class screen1 extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                             if (response.body() != null) { //null 뿐 아니라 오류 값이 들어올 때도 처리해줘야 함.
-                                List<User> users = response.body();
 
-                                String rid = users.get(0).toString();
-                                String rpass = users.get(1).toString();
+
+                                List<User> users = (response.body());
+
+                                //여기서 아이디에 따라 어떤 사용자를 불러올지 정하면 될듯
+                                User a = users.get(0);
+
+
+                                String rid = a.getId();
+                                String rpass = a.getPassword();
+//                                Toast.makeText(getApplicationContext(),"이건 rid야"+rid+"이건 users야", Toast.LENGTH_SHORT).show();
+
+
 
                                 Toast.makeText(getApplicationContext(),"good"+response.body().get(0).toString(), Toast.LENGTH_SHORT).show();
 
@@ -92,15 +101,6 @@ public class screen1 extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),"비밀번호 틀림", Toast.LENGTH_SHORT).show();
                                     }
                                 }
-
-
-
-
-
-
-
-
-
 
 
                             } else {

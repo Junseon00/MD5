@@ -12,32 +12,37 @@ public interface retroAPI {
 
 
     //ngrok1
-    public static final String API_URL = "http://32b7487bcaa5.ngrok.io/";
+    public static final String API_URL = "https://2c5ebddb476b.ngrok.io/";
     //--------------------------------- B
 
     //통신 담당 메소드 구현.
-    @GET("user")
-    Call<List<User>> user(@Query("id") String id, @Query("pw") String pass);
+    @GET("tests/")
+    Call<List<User>> user(@Query("id") String id, @Query("pw") String pw);
 
 
-    ////--------------김소현이 해 본 부분----------------------------///
-    //이미지 보내기 메소드
-    public interface ApiService2 {
-        public static final String API_URL = "http://jsonplaceholder.typicode.com/";
 
-        @GET("url뒷부분")
-        Call<ResponseBody>getComment(@Query("postId") int postId);
-        //@GET(“api주소”)
-        //Call<ResponseBody>함수이름(@Query(“변수이름”), 안드로이드에서 보낼 변수)
+//    public interface ApiService {
+//        public static final String API_URL = "http://jsonplaceholder.typicode.com/";
+//
+//        @GET("comments")
+//        Call<ResponseBody>getComment(@Query("postId") int postId);
+//
+//    }
 
-    }
-
-    public interface ApiService {
-        public static final String API_URL = "http://jsonplaceholder.typicode.com/";
-
-        @GET("comments")
-        Call<ResponseBody>getComment(@Query("postId") int postId);
-
-    }
 
 }
+
+//    ////--------------김소현이 해 본 부분----------------------------///
+//    //이미지 보내기 메소드
+//    public interface ApiService2 {
+//        public static final String API_URL = "http://jsonplaceholder.typicode.com/";
+//
+//        @GET("url뒷부분")
+//        Call<ResponseBody>getComment(@Query("postId") ibnt postId);
+//        //@GET(“api주소”)
+//        //Call<ResponseBody>함수이름(@Query(“변수이름”), 안드로이드에서 보낼 변수)
+//
+//    }
+//
+
+

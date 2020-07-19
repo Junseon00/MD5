@@ -3,10 +3,10 @@ package com.example.myapplication;
 //"하나의 row"가 담기는 그릇이 됨.
 public class User {
     String id;
-    String password;
-    String hashedpw;
-    String phone;
-    String birth;
+    String pw;
+//    String hashedpw;
+//    String phone;
+//    String birth;
 
     public User(){
 
@@ -17,19 +17,13 @@ public class User {
     public String toString() {
         return "User{" +
                 ", id=" + id +
-                ", password='" + password + '\'' +
-                ", hasedpw='" + hashedpw + '\'' +
-                ", phone='" + phone + '\'' +
-                ", birth='" + birth + '\'' +
+                ", pw='" + pw + '\'' +
                 '}';
     }
 
-    public User(String id, String password, String hashedpw, String phone, String birth) {
+    public User(String id, String password) {
         this.id = id;
-        this.password = password;
-        this.hashedpw = hashedpw;
-        this.phone = phone;
-        this.birth = birth;
+        this.pw = password;
     }
 
     private String token;
@@ -43,36 +37,36 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return pw;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.pw = pw;
     }
 
-    public String getHashedpw() {
-        return hashedpw;
-    }
-
-    public void setHashedpw(String name) {
-        this.hashedpw = hashedpw;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getbirth() {
-        return birth;
-    }
-
-    public void setbirth(String birth) {
-        this.birth = birth;
-    }
+//    public String getHashedpw() {
+//        return hashedpw;
+//    }
+//
+//    public void setHashedpw(String name) {
+//        this.hashedpw = hashedpw;
+//    }
+//
+//    public String getPhone() {
+//        return phone;
+//    }
+//
+//    public void setPhone(String phone) {
+//        this.phone = phone;
+//    }
+//
+//    public String getbirth() {
+//        return birth;
+//    }
+//
+//    public void setbirth(String birth) {
+//        this.birth = birth;
+//    }
 
 //    public String getOs() {
 //        return os;
