@@ -159,7 +159,7 @@ public void addTime(View view){
 
         }
         else{ //알람이 꺼져있을 때
-            SharedPreferences pref = getSharedPreferences("timeFile", MODE_PRIVATE);
+            SharedPreferences pref = getSharedPreferences("sFile", MODE_PRIVATE);
             SharedPreferences.Editor editor = pref.edit();
             tv.setText("알람이 실행중이 아닙니다.");
             editor.remove("alarm");

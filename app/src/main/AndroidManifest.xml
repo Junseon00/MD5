@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PopupActivity" android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
-
+        <activity android:name=".screen8calender"></activity>
+        <activity
+            android:name=".PopupActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
         <activity android:name=".screen7camera" />
         <activity android:name=".screen6" />
         <activity android:name=".MenuFragment" />

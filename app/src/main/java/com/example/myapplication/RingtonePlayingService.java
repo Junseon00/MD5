@@ -157,7 +157,7 @@ public class RingtonePlayingService extends Service{
 
 
             }
-        }, 2000);  // 2초
+        }, 20000);  // 20초
     }
 
 //헤드업 노티피 케이션. 보이기 쉽게 표시
