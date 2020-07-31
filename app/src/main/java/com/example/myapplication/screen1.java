@@ -81,30 +81,61 @@ public class screen1 extends AppCompatActivity {
 
                                 List<User> users = (response.body());
 
+
+
+
                                 //여기서 아이디에 따라 어떤 사용자를 불러올지 정하면 될듯
-                                User a = users.get(0);
+                                List<User> userList=users;
 
-
-                                String rid = a.getId();
-                                String rpass = a.getPassword();
-//                                Toast.makeText(getApplicationContext(),"이건 rid야"+rid+"이건 users야", Toast.LENGTH_SHORT).show();
-
-
-
-                                Toast.makeText(getApplicationContext(),"good"+response.body().get(0).toString(), Toast.LENGTH_SHORT).show();
-
-                                if(id.equals(rid)){
-                                    if(pass.equals(rpass)){
-                                        Intent intent= new Intent(screen1.this, MainActivity.class);
+                                for(int i=0; i<userList.size(); i++) {
+                                    User a = userList.get(i);
+                                    if (id.equals(a.getId()) && pass.equals(a.getPassword())) {
+                                        Toast.makeText(getApplicationContext(), "good" + a.toString(), Toast.LENGTH_SHORT).show();
+                                        i = userList.size() + 1;
+                                        Intent intent = new Intent(screen1.this, MainActivity.class);
                                         startActivity(intent);
-                                    } else{
-                                        Toast.makeText(getApplicationContext(),"비밀번호 틀림", Toast.LENGTH_SHORT).show();
+
+                                    } else if (id.equals(a.getId()) && !pass.equals(a.getPassword())) {
+                                        Toast.makeText(getApplicationContext(), "비밀번호 틀림", Toast.LENGTH_SHORT).show();
+                                        i = userList.size() + 1;
                                     }
+
+
+                                    if(i==userList.size()-1){
+                                        Toast.makeText(getApplicationContext(),"일치하는 아이디가 없습니다", Toast.LENGTH_SHORT).show();
+                                    }
+
                                 }
 
 
+
+
+
+
+
+//                                User a = users.get(0);
+//
+//
+//                                String rid = a.getId();
+//                                String rpass = a.getPassword();
+////                                Toast.makeText(getApplicationContext(),"이건 rid야"+rid+"이건 users야", Toast.LENGTH_SHORT).show();
+//
+//
+//
+//                                Toast.makeText(getApplicationContext(),"good"+response.body().get(0).toString(), Toast.LENGTH_SHORT).show();
+//
+//                                if(id.equals(rid)){
+//                                    if(pass.equals(rpass)){
+//                                        Intent intent= new Intent(screen1.this, MainActivity.class);
+//                                        startActivity(intent);
+//                                    } else{
+//                                        Toast.makeText(getApplicationContext(),"비밀번호 틀림", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
+
+
                             } else {
-                                Toast.makeText(getApplicationContext(),"error1", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"error1 연결은 되었으나 객체가 비어있음", Toast.LENGTH_SHORT).show();
                             }
                         }
 

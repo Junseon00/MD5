@@ -1,16 +1,23 @@
 package com.example.myapplication;
 
+import com.google.gson.annotations.SerializedName;
+
 //"하나의 row"가 담기는 그릇이 됨.
 public class User {
-    String id;
-    String pw;
+    @SerializedName("id")
+    public String id;
+    @SerializedName("pw")
+    public String pw;
+
+
+
+
+
+//    public String id;
+//    public String pw;
 //    String hashedpw;
 //    String phone;
 //    String birth;
-
-    public User(){
-
-    }
 
 
     @Override
@@ -43,6 +50,11 @@ public class User {
     public void setPassword(String password) {
         this.pw = pw;
     }
+
+
+
+
+
 
 //    public String getHashedpw() {
 //        return hashedpw;

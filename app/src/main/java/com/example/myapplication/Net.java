@@ -19,12 +19,12 @@ public class Net {
     }
 
 
-    //ngrok2
-
+    //ngrok2 주소 업데이트해줘야함(retroAPI에도)
     private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://2c5ebddb476b.ngrok.io/")
+            .baseUrl("https://925ac68cc61e.ngrok.io/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
+
     retroAPI memberFactoryIm; //--------------------------------------- B
 
     public retroAPI getMemberFactory(){ //------------------------ C

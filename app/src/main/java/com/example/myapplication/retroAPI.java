@@ -3,24 +3,42 @@ package com.example.myapplication;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
-import okhttp3.ResponseBody;
 
 public interface retroAPI {
 
 
-    //ngrok1
-    public static final String API_URL = "https://2c5ebddb476b.ngrok.io/";
+    //ngrok 경로에 가서 ngrok http 8000 하고 주소 업데이트(Net에도)
+    public static final String API_URL = "https://925ac68cc61e.ngrok.io/";
     //--------------------------------- B
 
-    //통신 담당 메소드 구현.
+    //로그인용 GET
     @GET("tests/")
     Call<List<User>> user(@Query("id") String id, @Query("pw") String pw);
 
 
+    //로그아웃용 POST
+    @POST("test/")
+    Call<Logout> logout(@Body Logout logout, @Header("Authorization") String authorization);
 
+    //회원가입용 POST
+    @POST("tests/")
+    Call<User> createUser(@Body User user);
+
+
+
+
+
+
+
+
+
+
+//***이거 밑에도 김소현이 해 본 부분?
 //    public interface ApiService {
 //        public static final String API_URL = "http://jsonplaceholder.typicode.com/";
 //
