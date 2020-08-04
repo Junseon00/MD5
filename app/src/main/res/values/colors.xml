@@ -4,4 +4,11 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="temporary">#C3F8FF</color>
+
+    <color name="firstblue">#F2F4F9</color>
+    <color name="secondblue">#51A2DA</color>
+    <color name="thirdblue">#B8D1FF</color>
+    <color name="fourthblue">#C2CEE5</color>
+    <color name="splashbg">#203864</color>
+
 </resources>

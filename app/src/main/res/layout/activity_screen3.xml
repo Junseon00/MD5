@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/firstblue"
     tools:context=".screen3">
 
 <!--XX부분은 입력인지 촬영인지 확실하지 않아서 XX로 넣었음-->

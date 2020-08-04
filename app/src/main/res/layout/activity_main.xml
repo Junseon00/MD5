@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/firstblue"
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
 
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,55 +22,92 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="50dp"
-            android:text="어서 오십 시오 **님 (환영문구)"
-            android:textColor="#0D173D" />
+            android:text="건강한 아침이에요!"
+            android:textSize="25sp"
+            android:textColor="#0D173D"
+            android:autoSizeTextType="uniform"/>
+
+
+        <ImageView
+            android:layout_width="227dp"
+            android:layout_height="152dp"
+            android:background="@drawable/alyake" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:text="MD5 님,"
+            android:textSize="25sp"
+            android:textColor="#0D173D"
+            android:autoSizeTextType="uniform"/>
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="처방전, 의약품 입력하기" />
+            android:text="처방전 · 의약품 입력"
+            android:layout_marginBottom="5dp"
+            android:textSize="25sp"
+            android:background="@drawable/wbbutton"
+            />
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="내 과거 의약 기록 보기" />
+            android:layout_marginBottom="5dp"
+            android:text="과거 의약 기록"
+            android:textSize="25sp"
+            android:background="@drawable/wbbutton"/>
 
         <Button
             android:id="@+id/button14"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
             android:text="건강 달력"
-            android:onClick="calender"/>
+            android:textSize="25sp"
+            android:onClick="calender"
+            android:background="@drawable/wbbutton"/>
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
             android:onClick="alarm"
-            android:text="복용 시간 알람 서비스"
+            android:text="복용 시간 알람"
+            android:textSize="25sp"
+            android:background="@drawable/wbbutton"
             />
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:text="내 정보 수정하기" />
+            android:layout_marginBottom="5dp"
+            android:text="내 정보 수정"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bbbutton"/>
 
         <Button
             android:id="@+id/button13"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="logout"
-            android:text="로그아웃" />
+            android:text="로그아웃"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bbbutton"/>/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
