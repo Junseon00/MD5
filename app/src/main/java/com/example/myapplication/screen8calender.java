@@ -3,10 +3,16 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CalendarView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -70,6 +76,11 @@ public class screen8calender extends AppCompatActivity {
 
     }
 
+    public void toscM(View v){
+        Intent intent1 = new Intent(this,MainActivity.class);
+        startActivity(intent1);
+    }
+
     private class ApiSimulator extends AsyncTask<Void, Void, List<CalendarDay>> {
 
         //전달받은 result의 날짜들을 저장함. 사실 쓸모없지만 혹시 모르니 남겨둠.
@@ -91,25 +102,26 @@ public class screen8calender extends AppCompatActivity {
             //Calendar calendar = Calendar.getInstance(); //뭐하는 애지?
             ArrayList<CalendarDay> dates = new ArrayList<>(); //특정 날짜를 기억하는 리스트
 
+            try{
             //원하는 날짜를 CALENDARday에 추가해준다.//
-            
+            //db에서 모든 시간 다 불러와 DB에 설정 //알람이 울렸던 날짜를 가져온다.
+            MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(screen8calender.this);
+            SQLiteDatabase db = helper.getWritableDatabase(); //wrtie이네?!
+            Cursor cursor = db.rawQuery("SELECT DISTINCT date from patient order by _id",null);
 
-            int month = 7; //달은 원하는 달 -1
-            int year = 2020; //년은 그대로
-            int dayy = 18; //일
-            //calendarday method from = from(int year, int month, int day) parameter
-            CalendarDay day = CalendarDay.from(year,month,dayy); //특정날짜의 calendarday instance 생성
-            dates.add(day); //CalendarDay instance를 받는다
-            //calendar.add(Calendar.DATE, 5); //뭐하는애지?
+            while(cursor.moveToNext()){
+                String day;
+                day=cursor.getString(0); //day format은 "yyyy/MM/dd"임
+                String[] time = day.split("/"); // '/'기준으로 string을 자른다.
+                int year = Integer.parseInt(time[0]); //yyyy
+                int month = Integer.parseInt(time[1]) -1; //mm
+                int dd = Integer.parseInt(time[2]); //dd
+                CalendarDay cd = CalendarDay.from(year,month,dd);
+                dates.add(cd);
 
-            dayy=19;
-            day = CalendarDay.from(year,month,dayy); //특정날짜의 calendarday instance 생성
-            dates.add(day);
+            }
 
-
-            return dates;
-
-
+            return dates;}catch(Exception e){return null;}
 
 
         }
@@ -122,9 +134,11 @@ public class screen8calender extends AppCompatActivity {
                 return;
             }
 
-
+            if (calendarDays != null){
             calendar.addDecorator(new EventDecorator(Color.RED, calendarDays,screen8calender.this));
-            Log.d("udb onpostedExecute실행","onpostesexcute가 실행됨");
+            Log.d("udb onpostedExecute실행","onpostesexcuted의 decotrator가 실행됨");}
+            else {return;}
+
 
 
         }
