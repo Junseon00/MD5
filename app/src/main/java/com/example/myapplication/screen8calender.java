@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CalendarView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -20,7 +21,26 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
+
+//
+
+
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
+
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+
+import java.util.Date;
+
+//
 
 public class screen8calender extends AppCompatActivity {
 
@@ -33,7 +53,7 @@ public class screen8calender extends AppCompatActivity {
         calendar = findViewById(R.id.calendarView);
 
         //특정 날짜에 점 표시
-        String[] result = {"2020,08,18","2020,08,19","2020,09,11"};
+        String[] result = {"2020,08,18"}; //default date (not used)
         new ApiSimulator(result).executeOnExecutor(Executors.newSingleThreadExecutor());
 
 
@@ -50,27 +70,48 @@ public class screen8calender extends AppCompatActivity {
 
     }
 
-
-    //특정 날짜에 효과 표시
     private class ApiSimulator extends AsyncTask<Void, Void, List<CalendarDay>> {
+
+        //전달받은 result의 날짜들을 저장함. 사실 쓸모없지만 혹시 모르니 남겨둠.
+        String[] Time_Result;
+
+        ApiSimulator(String[] Time_Result){
+            this.Time_Result = Time_Result;
+        }
+
 
         @Override
         protected List<CalendarDay> doInBackground(@NonNull Void... voids) {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.MONTH, -2);
-            ArrayList<CalendarDay> dates = new ArrayList<>();
-            for (int i = 0; i < 30; i++) {
-                CalendarDay day = CalendarDay.from(calendar);
-                dates.add(day);
-                calendar.add(Calendar.DATE, 5);
-            }
+
+            //Calendar calendar = Calendar.getInstance(); //뭐하는 애지?
+            ArrayList<CalendarDay> dates = new ArrayList<>(); //특정 날짜를 기억하는 리스트
+
+            //원하는 날짜를 CALENDARday에 추가해준다.//
+            
+
+            int month = 7; //달은 원하는 달 -1
+            int year = 2020; //년은 그대로
+            int dayy = 18; //일
+            //calendarday method from = from(int year, int month, int day) parameter
+            CalendarDay day = CalendarDay.from(year,month,dayy); //특정날짜의 calendarday instance 생성
+            dates.add(day); //CalendarDay instance를 받는다
+            //calendar.add(Calendar.DATE, 5); //뭐하는애지?
+
+            dayy=19;
+            day = CalendarDay.from(year,month,dayy); //특정날짜의 calendarday instance 생성
+            dates.add(day);
+
 
             return dates;
+
+
+
+
         }
 
         @Override
@@ -81,8 +122,15 @@ public class screen8calender extends AppCompatActivity {
                 return;
             }
 
+
             calendar.addDecorator(new EventDecorator(Color.RED, calendarDays,screen8calender.this));
+            Log.d("udb onpostedExecute실행","onpostesexcute가 실행됨");
+
+
         }
+
+
     }
 
-}
+
+}//end of main class
