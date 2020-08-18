@@ -65,6 +65,7 @@ public class screen8calender extends AppCompatActivity {
 
 
         //클릭이벤트
+        Intent intent = new Intent(this, AlarmCalenderPopUp.class);
         calendar.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -77,22 +78,52 @@ public class screen8calender extends AppCompatActivity {
                 Log.i("Month test", Month + "");
                 Log.i("Day test", Day + "");
 
-                String shot_Day = Year + "/" + Month + "/" + Day+"선택";
+                String m;
+                String d;
+
+                //yyyy/mm/dd꼴로 만들어주기
+                if(Month<10){
+                    m="0"+Month;
+                }
+                else {m=""+Month;}
+
+                if(Day <10){
+                    d = "0"+Day;
+                }
+                else{d=""+Day;}
+
+                String shot_Day = Year + "/" + m + "/" + d;
 
                 Log.i("shot_Day test", shot_Day + "");
                 calendar.clearSelection();
 
-                Toast.makeText(getApplicationContext(), shot_Day , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), shot_Day+"선택" , Toast.LENGTH_SHORT).show();
 
-
-
-
+                //calendar popu intent부르기
+                intent.putExtra("date", shot_Day);
+                startActivityForResult(intent, 1);
             }
+
+
+
+
         });
 
 
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                //캘린더 popup부른 뒤
+                // ..아무것도 안해
+            }
+        }
+    }
+
 
     public void toscM(View v){
         Intent intent1 = new Intent(this,MainActivity.class);
