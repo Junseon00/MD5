@@ -38,6 +38,7 @@ import android.graphics.Typeface;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.widget.Toast;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
@@ -63,15 +64,32 @@ public class screen8calender extends AppCompatActivity {
         new ApiSimulator(result).executeOnExecutor(Executors.newSingleThreadExecutor());
 
 
-//        //클릭이벤트
-//        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-//            @Override
-//            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-//
-//            }
-//        });
-//
-//        int beforeYear = Integer.parseInt(getYear(String.valueOf(befor)))
+        //클릭이벤트
+        calendar.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+
+                int Year = date.getYear();
+                int Month = date.getMonth() + 1;
+                int Day = date.getDay();
+
+                Log.i("Year test", Year + "");
+                Log.i("Month test", Month + "");
+                Log.i("Day test", Day + "");
+
+                String shot_Day = Year + "/" + Month + "/" + Day+"선택";
+
+                Log.i("shot_Day test", shot_Day + "");
+                calendar.clearSelection();
+
+                Toast.makeText(getApplicationContext(), shot_Day , Toast.LENGTH_SHORT).show();
+
+
+
+
+            }
+        });
+
 
 
     }
