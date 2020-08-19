@@ -10,5 +10,6 @@
     <color name="thirdblue">#B8D1FF</color>
     <color name="fourthblue">#C2CEE5</color>
     <color name="splashbg">#203864</color>
+    <color name="common">#090909</color>
 
 </resources>
