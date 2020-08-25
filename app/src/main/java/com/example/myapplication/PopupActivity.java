@@ -9,12 +9,17 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PopupActivity extends Activity {
+
+    TextView memo = (TextView)findViewById(R.id.textView14);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

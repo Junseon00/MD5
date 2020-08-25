@@ -33,6 +33,7 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
             button = itemView.findViewById(R.id.button11);
 
 
+
         }
 
 
@@ -60,9 +61,11 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
     public void onBindViewHolder(SimpleTextAdapter.ViewHolder holder, int position) {
         String text = mData.get(position) ;
         holder.textView1.setText(text) ;
+        Button button=holder.button;
 
-        holder.button.setOnClickListener(new View.OnClickListener(){
+        button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                Log.d("udg SimpleTextAdapter","버튼 클릭");
                 //mData에 position에 해당되는 데이터를 지우면 됨.
                 //text는 시간:분 형식이고, DB는 시간 열, 분 열으로 저장됨
                 MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(v.getContext());
@@ -73,9 +76,15 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
                 int min = Integer.parseInt(hourmin[1]);
                 String query = "DELETE FROM times WHERE hour='" + hour +"'AND minute='"+min+"'";
                 db.execSQL(query);
-                notifyDataSetChanged(); //데이터 변경 알람
+                db.close();
 
-                Log.d("udb simpleTextAdapter","sql 데이터 삭제 성공");
+                Log.d("udb simpleTextAdapter","sql 데이터 삭제 성공:"+query);
+
+                mData.remove(position);
+                notifyDataSetChanged();
+
+
+
             }
         });
 

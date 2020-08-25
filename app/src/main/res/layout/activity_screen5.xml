@@ -29,7 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numbersTextColor="#000000"
-            android:paddingBottom="50dp"
             android:timePickerMode="spinner" />
 
         <LinearLayout
@@ -45,17 +44,18 @@
                 android:layout_gravity="left|center_vertical"
                 android:layout_weight="0"
                 android:layout_marginLeft="10dp"
-                android:text="메모(선택)" />
+                android:text="메모(선택) : "
+                android:textSize="20dp"/>
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/memo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="약품 이름 혹은 주의사항 작성"
                 android:layout_marginRight="10dp"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
         </LinearLayout>
 
         <Button
@@ -63,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="추가하기"
+            android:layout_marginBottom="50dp"
             android:onClick="add"/>
 
         <Button
@@ -70,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="취소"
+            android:background="#FFFF"
             android:onClick="return5"/>
 
     </LinearLayout>
