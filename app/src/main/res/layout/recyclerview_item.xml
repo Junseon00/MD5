@@ -6,26 +6,28 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/recycle_item_edge"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="@color/temporary">
+        android:paddingRight="10dp">
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:text="TextView"
-            android:background="#FFFF"/>
+            android:text="TextView" />
 
         <Button
             android:id="@+id/button11"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0"
+            android:background="@color/firstblue"
             android:text="삭제" />
     </LinearLayout>
 </LinearLayout>

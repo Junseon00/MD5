@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
+        android:background="@color/gray"
         app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
@@ -27,7 +28,7 @@
             android:id="@+id/timePicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:numbersTextColor="#000000"
             android:paddingBottom="50dp"
             android:timePickerMode="spinner" />
 
@@ -41,8 +42,9 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal|center_vertical"
-                android:layout_weight="1"
+                android:layout_gravity="left|center_vertical"
+                android:layout_weight="0"
+                android:layout_marginLeft="10dp"
                 android:text="메모(선택)" />
 
             <EditText
@@ -52,6 +54,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="약품 이름 혹은 주의사항 작성"
+                android:layout_marginRight="10dp"
                 android:inputType="textPersonName" />
         </LinearLayout>
 

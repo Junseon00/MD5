@@ -8,13 +8,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.lang.reflect.Field;
 import java.util.Calendar;
 
 public class screen5 extends AppCompatActivity {
@@ -27,6 +33,9 @@ public class screen5 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen5);
         timepicker=(TimePicker) findViewById(R.id.timePicker);
+
+
+
 
 
 
@@ -79,6 +88,8 @@ public void addTimes(){
     db.close();
 
 }
+
+
 
 
 
