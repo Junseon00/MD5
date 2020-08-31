@@ -13,13 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AlarmCalenderPopUp" android:theme = "@android:style/Theme.Dialog"></activity>
-        <activity android:name=".screen8calender">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".screen8calender"></activity>
         <activity
             android:name=".PopupActivity"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
@@ -39,9 +33,14 @@
         <activity android:name=".screen1"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".SplashActivity"    android:screenOrientation="portrait"    android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
