@@ -8,6 +8,12 @@ public class User {
     public String id;
     @SerializedName("pw")
     public String pw;
+//    @SerializedName("hashedpw")
+//    public String hashedpw;
+    @SerializedName("phone")
+    public String phone;
+    @SerializedName("birth")
+    public String birth;
 
 
 
@@ -22,15 +28,15 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                ", id=" + id +
-                ", pw='" + pw + '\'' +
-                '}';
+        return "User{" + ", id=" + id + ", pw='" + pw +  ", phone=" + phone + ", birth=" + birth + '\'' +"}";
     }
 
-    public User(String id, String password) {
+    public User(String id, String password, String phone, String birth) {
         this.id = id;
         this.pw = password;
+//        this.hashedpw = hashedpw;
+        this.phone = phone;
+        this.birth = birth;
     }
 
     private String token;
@@ -48,7 +54,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.pw = pw;
+        this.pw = password;
     }
 
 

@@ -13,20 +13,20 @@ public interface retroAPI {
 
 
     //ngrok 경로에 가서 ngrok http 8000 하고 주소 업데이트(Net에도)
-    public static final String API_URL = "https://925ac68cc61e.ngrok.io/";
+    public static final String API_URL = "https://ewhamd5.herokuapp.com/";
     //--------------------------------- B
 
     //로그인용 GET
-    @GET("tests/")
+    @GET("user/")
     Call<List<User>> user(@Query("id") String id, @Query("pw") String pw);
 
 
     //로그아웃용 POST
-    @POST("test/")
+    @POST("user/")
     Call<Logout> logout(@Body Logout logout, @Header("Authorization") String authorization);
 
     //회원가입용 POST
-    @POST("tests/")
+    @POST("user/")
     Call<User> createUser(@Body User user);
 
 
