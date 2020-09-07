@@ -38,6 +38,11 @@
             android:text="해당 의약품을 잘 복용하셨습니까? \n 이 결과는 기록됩니다."
             android:textColor="#000"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
     <!-- Notice -->
 
@@ -77,4 +82,3 @@
     </LinearLayout>
     <!--// 닫기 버튼 -->
 </LinearLayout>
-

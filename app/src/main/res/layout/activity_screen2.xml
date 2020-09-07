@@ -5,6 +5,7 @@
     android:id="@+id/ctlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wrinkled_bg"
 
     tools:context=".screen2register">
 

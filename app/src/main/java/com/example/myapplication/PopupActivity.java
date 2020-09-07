@@ -9,12 +9,17 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PopupActivity extends Activity {
+
+    TextView memo = (TextView)findViewById(R.id.textView14);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +68,7 @@ public class PopupActivity extends Activity {
                 "date TEXT," +
                 "time TEXT," +
                 "memo TEXT," +
-                "taken boolean);";;
+                "taken TEXT);";;
         db.execSQL(sql);
 
         //※memo를 적용하지 않을거라면, 해당 시간을 가져온다(이것이 저장되는 시기는 알람발생 시기와 20초밖에 차이 안나서, 다시 가져오지 않아도 된다.)
@@ -90,7 +95,10 @@ public class PopupActivity extends Activity {
         try{
             //결과를 저장한다.
             // db.execSQL("insert into patient (date,time,taken) values(" +  date+ "," + time + "," + answer +");");
-            db.execSQL("insert into patient (date,time,taken) values(?,?,?);",new Object[]{date,time,answer} );
+            String yn;
+            if(answer){ yn = "true";}
+            else{yn = "false";}
+            db.execSQL("insert into patient (date,time,taken) values(?,?,?);",new String[]{date,time,yn} );
             db.close();
             //결과 출력
             if(answer){
