@@ -12,7 +12,7 @@ public class SplashActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        startActivity(new Intent(this, screen1.class));
+        startActivity(new Intent(this, screen1login.class));
         try {
             sleep(1000);
         } catch (InterruptedException e) {

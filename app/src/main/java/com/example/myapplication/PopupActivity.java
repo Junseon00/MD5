@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +21,9 @@ import java.util.Date;
 
 public class PopupActivity extends Activity {
 
-    TextView memo = (TextView)findViewById(R.id.textView14);
+    TextView memotxt;
+    String memo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,29 @@ public class PopupActivity extends Activity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_popup);
+
+        //뷰 선언
+        memotxt = (TextView)findViewById(R.id.textView14);
+        //알람이 울렸던 시간과 분을 가져온다.
+        Intent intent = getIntent();
+        String hour = intent.getExtras().getString("hour");
+        String minute = intent.getExtras().getString("minute");
+
+        MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(PopupActivity.this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String sql = "SELECT memo from times WHERE hour='"+hour+"' AND minute='"+minute+"';";
+        Log.d("udb popupactivicy","다음과 같은 sql로 db쿼리 = "+sql);
+        Cursor cursor = db.rawQuery(sql ,null);
+
+        if(cursor != null && cursor.moveToFirst()){
+            memo = cursor.getString(0);
+            memotxt.setText(memo);
+        }
+        else {
+            Log.d("udb popup activity","퀄이 결과가 없다.");
+        }
+
+        db.close();
 
     }
 
@@ -71,7 +98,6 @@ public class PopupActivity extends Activity {
                 "taken TEXT);";;
         db.execSQL(sql);
 
-        //※memo를 적용하지 않을거라면, 해당 시간을 가져온다(이것이 저장되는 시기는 알람발생 시기와 20초밖에 차이 안나서, 다시 가져오지 않아도 된다.)
 
         //시간을 불러와 설정한다
         String date ="0000/00/00";
@@ -90,7 +116,7 @@ public class PopupActivity extends Activity {
         //String 형식으로 format을 변환해 date에 저장
         date = sdfNow.format(date2);
         //결과 체크
-        Log.d("udb 시간 불러 옴","데이터 베이스에 해당 값을 저장하려고 함. date:"+date+" time:"+time+" answer:"+answer);
+        Log.d("udb 시간 불러 옴","데이터 베이스에 해당 값을 저장하려고 함. date:"+date+" time:"+time+" answer:"+answer+" memo"+memo);
 
         try{
             //결과를 저장한다.
@@ -98,19 +124,20 @@ public class PopupActivity extends Activity {
             String yn;
             if(answer){ yn = "true";}
             else{yn = "false";}
-            db.execSQL("insert into patient (date,time,taken) values(?,?,?);",new String[]{date,time,yn} );
+            db.execSQL("insert into patient (date,time,taken,memo) values(?,?,?,?);",new String[]{date,time,yn,memo} );
             db.close();
             //결과 출력
             if(answer){
-                Toast.makeText(this,"복용 여부가 저장 되었습니다: "+date+" "+time+" 복용 했음.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"복용 여부가 저장 되었습니다: "+date+" "+time+" 복용 했음. memo="+memo, Toast.LENGTH_SHORT).show();
             }
             else{
-                Toast.makeText(this,"복용 여부가 저장 되었습니다: "+date+" "+time+" 복용 안했음.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"복용 여부가 저장 되었습니다: "+date+" "+time+" 복용 안했음. memo="+memo, Toast.LENGTH_SHORT).show();
             }
 
         }//end of try
         catch(Exception e){
-            Log.d("udb pupup Activity db에러","데이터 베이스에 해당 값을 저장하는데 실패함. date:"+date+" time:"+time+" answer:"+answer);
+            Log.d("udb pupup Activity db에러","데이터 베이스에 해당 값을 저장하는데 실패함. date:"+date+" time:"+time+" answer:"+answer+" memo:"
+            +memo);
         }//end of catch
 
 

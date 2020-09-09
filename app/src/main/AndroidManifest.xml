@@ -12,14 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
+
         <activity android:name=".screen9mypage"></activity>
         <activity android:name=".screen8calender">
         </activity>
-=======
+
         <activity android:name=".AlarmCalenderPopUp" android:theme = "@android:style/Theme.Dialog"></activity>
-        <activity android:name=".screen8calender"></activity>
->>>>>>> 0f762e23ecea1c44ac8174cbad407cc426879486
+
+
         <activity
             android:name=".PopupActivity"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
@@ -35,24 +35,20 @@
         <activity android:name=".screen5" />
         <activity android:name=".screen4" />
         <activity android:name=".screen3" />
-<<<<<<< HEAD
+
         <activity android:name=".screen2register" />
-        <activity android:name=".screen1login">
-=======
-        <activity android:name=".screen2" />
-        <activity android:name=".screen1"></activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".SplashActivity"    android:screenOrientation="portrait"    android:theme="@style/SplashTheme">
->>>>>>> 0f762e23ecea1c44ac8174cbad407cc426879486
+        <activity android:name=".screen1login"/>
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".SplashActivity"    android:screenOrientation="portrait"    android:theme="@style/SplashTheme">
 
         </activity>
-        <activity android:name=".MainActivity">
 
-        </activity>
 
         <receiver android:name=".Alarm_Receiver" />
     </application>

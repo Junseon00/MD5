@@ -24,6 +24,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class RingtonePlayingService extends Service{
 
     MediaPlayer mediaPlayer;
@@ -78,10 +81,25 @@ public class RingtonePlayingService extends Service{
             this.isRunning = true;
             this.startId = 0;
 
+
+
+            long millis = System.currentTimeMillis();
+
+            // 현재시간을
+            Date now = new Date(millis);
+            SimpleDateFormat nowH = new SimpleDateFormat("H");
+            String hour = nowH.format(now);
+
+            //현재 분
+            SimpleDateFormat nowM = new SimpleDateFormat("m");
+            String minute = nowM.format(now);
+            int min = Integer.parseInt(minute) +1;
+            minute = ""+min;
+
+            Log.d("udb RingTonPlaySer","알람이 울린 시각 = "+hour+":"+minute);
+
             //팝업
-            didyoueat();
-
-
+            didyoueat(hour,minute);
 
         }
 
@@ -129,7 +147,7 @@ public class RingtonePlayingService extends Service{
     }
 
     //약을 먹었는지 체크하기 전애 20초의 시간을 준다
-    public void didyoueat(){
+    public void didyoueat(String hour,String minute){
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -138,9 +156,10 @@ public class RingtonePlayingService extends Service{
             public void run() {
                 //팝업 액티비티 호출
                 Intent intent = new Intent(RingtonePlayingService.this, PopupActivity.class);
-                //intent.putExtra("data", "Test Popup"); //데이터 전달
+                intent.putExtra("hour",hour);
+                intent.putExtra("minute",minute);
                 startActivity(intent);
-                Log.d("popup","2초 후 popup 실행");
+                Log.d("popup","20초 후 popup 실행");
                 //((RingtonePlayingService) mContext).startActivityForResult(intent, 1);
 
 //                @Override
