@@ -41,7 +41,7 @@ public class PopupActivity extends Activity {
 
         MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(PopupActivity.this);
         SQLiteDatabase db = helper.getWritableDatabase();
-        String sql = "SELECT memo from times WHERE hour='"+hour+"' AND minute='"+minute+"';";
+        String sql = "SELECT memo from times WHERE hour='"+hour+"' AND minute='"+minute+"'";
         Log.d("udb popupactivicy","다음과 같은 sql로 db쿼리 = "+sql);
         Cursor cursor = db.rawQuery(sql ,null);
 
@@ -49,8 +49,26 @@ public class PopupActivity extends Activity {
             memo = cursor.getString(0);
             memotxt.setText(memo);
         }
-        else {
-            Log.d("udb popup activity","퀄이 결과가 없다.");
+        else { //안되면 minute이 잘못 측정 될 수 있으므로 한번 다시 시도해본다.
+            Log.d("udb popup activity","퀄 결과가 없다.");
+            int min = Integer.parseInt(minute) +1;
+            if (min==60){ //만약 +1 이 정각인 경우.
+                min=0;
+                int h = Integer.parseInt(hour)+1;
+                hour=""+h;
+            }
+
+            minute = ""+min;
+            sql = "SELECT memo from times WHERE hour='"+hour+"' AND minute='"+minute+"'";
+            Log.d("udb popupactivicy","다음과 같은 sql로 db쿼리 = "+sql);
+            cursor = db.rawQuery(sql ,null);
+            if(cursor != null && cursor.moveToFirst()){
+                memo = cursor.getString(0);
+                memotxt.setText(memo);
+            }
+            else{
+                Log.d("udb popupactivity","쿼리를 1분 늘려서 해도 소득 없음.");
+            }
         }
 
         db.close();
@@ -59,14 +77,14 @@ public class PopupActivity extends Activity {
 
     public void dideat(View v){
         //응답 저장
-        savePatientAnswer(true);
+        savePatientAnswer("O");
         //팝업창 종료
         finish();
     }
 
     public void didnteat(View v){
         //응답 저장
-        savePatientAnswer(false);
+        savePatientAnswer("X");
         //팝업창 종료
         finish();
     }
@@ -87,7 +105,7 @@ public class PopupActivity extends Activity {
     }
 
 
-    public void savePatientAnswer(boolean answer){
+    public void savePatientAnswer(String answer){
         //DB가 없으면 만든다
         MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -119,15 +137,12 @@ public class PopupActivity extends Activity {
         Log.d("udb 시간 불러 옴","데이터 베이스에 해당 값을 저장하려고 함. date:"+date+" time:"+time+" answer:"+answer+" memo"+memo);
 
         try{
-            //결과를 저장한다.
-            // db.execSQL("insert into patient (date,time,taken) values(" +  date+ "," + time + "," + answer +");");
-            String yn;
-            if(answer){ yn = "true";}
-            else{yn = "false";}
-            db.execSQL("insert into patient (date,time,taken,memo) values(?,?,?,?);",new String[]{date,time,yn,memo} );
+
+
+            db.execSQL("insert into patient (date,time,taken,memo) values(?,?,?,?);",new String[]{date,time,answer,memo} );
             db.close();
             //결과 출력
-            if(answer){
+            if(answer=="O"){
                 Toast.makeText(this,"복용 여부가 저장 되었습니다: "+date+" "+time+" 복용 했음. memo="+memo, Toast.LENGTH_SHORT).show();
             }
             else{

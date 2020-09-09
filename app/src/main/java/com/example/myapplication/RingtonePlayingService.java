@@ -93,8 +93,7 @@ public class RingtonePlayingService extends Service{
             //현재 분
             SimpleDateFormat nowM = new SimpleDateFormat("m");
             String minute = nowM.format(now);
-            int min = Integer.parseInt(minute) +1;
-            minute = ""+min;
+
 
             Log.d("udb RingTonPlaySer","알람이 울린 시각 = "+hour+":"+minute);
 

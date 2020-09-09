@@ -64,10 +64,9 @@ public class AlarmCalenderPopUp extends Activity {
             memo = cursor.getString(1);
             if( memo == null){ memo = "의약품";}
             yn = cursor.getString(2);
-            if (yn == "true"){yn = "O";}
-            else{yn=("X");}
+            Log.d("udb alarmcalender popup","when setting taken ="+yn);
             alarmList.add(new Patient(time,memo,yn));
-            Log.d("udb alarmcalenderpopup","리사이클러 뷰 보이기 성공");
+            //Log.d("udb alarmcalenderpopup","리사이클러 뷰 보이기 성공");
         }
             //리사이클러뷰 데이터 전달 및 adapter설정
         recycle.setLayoutManager(new LinearLayoutManager(this)); //매니저 객체지정
