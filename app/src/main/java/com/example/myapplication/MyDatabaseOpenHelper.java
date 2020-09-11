@@ -45,8 +45,8 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
                 "detail TEXT"+
                 ");");
 
-        //db.execSQL("insert into prescription (taking,pills,date,due,warining) values(?,?,?,?,?,?)",new String[]{
-        //"복용중","항히스타민제","2020-09-11","2020-09-14","안전"});
+        db.execSQL("insert into prescription (taking,pills,date,due,warning) values(?,?,?,?,?)",new String[]{
+        "복용중","항히스타민제","2020-09-11","2020-09-14","안전"});
 
 
     }

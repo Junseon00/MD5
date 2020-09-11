@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="#000000"
             android:gravity="center_horizontal"
             android:text="내가 복용한 의약품 목록"
             android:textSize="30dp" />
@@ -38,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                
+
                 android:textSize="20dp" />
 
             <androidx.recyclerview.widget.RecyclerView
