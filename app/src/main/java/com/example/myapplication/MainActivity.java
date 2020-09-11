@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
 
+    public void toSearchLog(View v){
+        Intent intent = new Intent(this,Screen10SearchLog.class);
+        startActivity(intent);
+    }
+
     //**효원 작업중 부분**//
 
 //    Activity page = this;
