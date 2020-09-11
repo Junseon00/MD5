@@ -33,6 +33,7 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
 
         //이렇게 해도 되겠지?
         db.execSQL("insert into times (hour,minute) values(8,0),(12,30),(18,0)");
+        
 
 
     }
