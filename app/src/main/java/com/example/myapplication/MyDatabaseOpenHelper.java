@@ -31,8 +31,22 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
         //칼럼은 _id,hour,minute,memo
         db.execSQL(createSQL);
 
-        //이렇게 해도 되겠지?
+        //디폴트 시간들
         db.execSQL("insert into times (hour,minute) values(8,0),(12,30),(18,0)");
+
+        //검색 내역 db
+        db.execSQL("CREATE TABLE prescription (" + "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "picture BLOB," +
+                "taking TEXT," +
+                "pills TEXT," +
+                "date TEXT,"+
+                "due TEXT,"+
+                "warning TEXT,"+
+                "detail TEXT"+
+                ");");
+
+        db.execSQL("insert into prescription (taking,pills,date,due,warning) values(?,?,?,?,?)",new String[]{
+        "복용중","항히스타민제","2020-09-11","2020-09-14","안전"});
 
 
     }

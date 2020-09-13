@@ -31,12 +31,7 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
             // 뷰 객체에 대한 참조. (hold strong reference)
             textView1 = itemView.findViewById(R.id.textView6) ; //in recycle xml
             button = itemView.findViewById(R.id.button11);
-
-
-
         }
-
-
     }
 
     // 생성자에서 데이터 리스트 객체를 전달받음.

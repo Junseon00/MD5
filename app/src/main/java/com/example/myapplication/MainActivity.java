@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
 
+<<<<<<< HEAD
 
     public void login(View v){
         Intent inte = new Intent(this, screen1login.class);
@@ -62,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+=======
+    public void toSearchLog(View v){
+        Intent intent = new Intent(this,Screen10SearchLog.class);
+        startActivity(intent);
+    }
+
+>>>>>>> 77de8ac1df787bc61390278434a1727c4b89c65c
     //**효원 작업중 부분**//
 
 //    Activity page = this;

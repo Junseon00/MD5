@@ -14,9 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".Query">
 
         </activity>
+=======
+        <activity android:name=".Screen10SearchLog"></activity>
+>>>>>>> 77de8ac1df787bc61390278434a1727c4b89c65c
         <activity android:name=".screen9mypage" />
         <activity android:name=".screen8calender"></activity>
         <activity
