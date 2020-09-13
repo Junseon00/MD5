@@ -1,24 +1,36 @@
 package com.example.myapplication;
 
+import android.util.Log;
+
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface retroAPI {
 
 
     //ngrok 경로에 가서 ngrok http 8000 하고 주소 업데이트(Net에도)
-    public static final String API_URL = "https://ewhamd5.herokuapp.com/";
+    public static final String API_URL = "http://13.125.80.169:8000/";
     //--------------------------------- B
 
     //로그인용 GET
     @GET("user/")
     Call<List<User>> user(@Query("id") String id, @Query("pw") String pw);
+
+
+    //약물 받아오기
+    @GET("drugdata/")
+    Call<List<Drug>> drug(@Query("injection") String injection, @Query("num") String num, @Query("component_code") String component_code, @Query("drug_code") String drug_code, @Query("drug_name") String drug_name, @Query("company") String company, @Query("size") String size, @Query("unit") String unit, @Query("price") String price, @Query("sj") String sj);
 
 
     //로그아웃용 POST
@@ -28,6 +40,29 @@ public interface retroAPI {
     //회원가입용 POST
     @POST("user/")
     Call<User> createUser(@Body User user);
+
+
+
+
+
+    @POST("drugdata/")
+    Call<Drug> post_posts(@Body Drug drug);
+
+    @PATCH("/drugdata/{pk}/")
+    Call<Drug> patch_posts(@Path("pk") int pk, @Body Drug drug);
+
+    @DELETE("/drugdata/{pk}/")
+    Call<Drug> delete_posts(@Path("pk") int pk);
+
+    @GET("drugdata/")
+    Call<List<Drug>> get_posts();
+
+    @GET("drugdata/{pk}/")
+    Call<Drug> get_post_pk(@Path("pk") int pk);
+
+
+
+
 
 
 

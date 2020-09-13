@@ -50,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
 
+
+    public void login(View v){
+        Intent inte = new Intent(this, screen1login.class);
+        startActivity(inte);
+    }
+
+    public void Rx(View v){
+        Intent inte = new Intent(this, screen3.class);
+        startActivity(inte);
+    }
+
+
     //**효원 작업중 부분**//
 
 //    Activity page = this;

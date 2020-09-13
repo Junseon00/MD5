@@ -63,5 +63,11 @@ public class screen3 extends AppCompatActivity {
 
     }//to the camera activity
 
+    public void toQuery(View v){
+        Intent intent = new Intent(this,Query.class );
+        startActivity(intent);
+
+    }//to the query activity
+
 
 }
