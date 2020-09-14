@@ -106,11 +106,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-<<<<<<< HEAD
-            android:onClick="login"
-=======
 
->>>>>>> 77de8ac1df787bc61390278434a1727c4b89c65c
+            android:onClick="login"
             android:text="로그아웃"
             android:textSize="25sp"
             android:textColor="#FFFFFF"
