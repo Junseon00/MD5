@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,23 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder>{
             pills = itemView.findViewById(R.id.textView18);
             taking = itemView.findViewById(R.id.textView20);
             warning = itemView.findViewById(R.id.textView21);
+
+            // 아이템 클릭 이벤트 처리.
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //log popup intent부르기
+                    Intent intent = new Intent(v.getContext(),LogPopup.class);
+                    int pos = getAdapterPosition() ;
+                    if (pos != RecyclerView.NO_POSITION) {
+                        intent.putExtra("id", pos);
+                    }
+                    v.getContext().startActivity(intent);
+                }
+            });
+
         }
+
     }
 
 
@@ -80,6 +97,8 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder>{
         viewHolder.warning.setText(myDataList.get(position).getwarning());
 
         android.util.Log.d("udb logadapter","onbind view holder end");
+
+
 
     }
 
