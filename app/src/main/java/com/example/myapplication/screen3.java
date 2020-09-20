@@ -19,23 +19,23 @@ public class screen3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen3);
 
-        menu = findViewById(R.id.menu);
-
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                MenuFragment fragment1 = new MenuFragment();
-                transaction.replace(R.id.frame, fragment1);
-                transaction.commit();
-            }
-        });
-
-
-
-
-        bt1 = findViewById(R.id.btn1);
-        bt2 = findViewById(R.id.btn2);
+//        menu = findViewById(R.id.menu);
+//
+//        menu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                MenuFragment fragment1 = new MenuFragment();
+//                transaction.replace(R.id.frame, fragment1);
+//                transaction.commit();
+//            }
+//        });
+//
+//
+//
+//
+//        bt1 = findViewById(R.id.btn1);
+//        bt2 = findViewById(R.id.btn2);
 
 //        bt1.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -68,6 +68,11 @@ public class screen3 extends AppCompatActivity {
         startActivity(intent);
 
     }//to the query activity
+
+    public void home(View v){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
 
 }

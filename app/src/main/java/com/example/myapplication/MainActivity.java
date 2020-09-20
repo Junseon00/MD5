@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public native String stringFromJNI();
 
+    public void Rx(View v){
+        Intent inte = new Intent(this, screen3.class);
+        startActivity(inte);
+    }//처방전 입력하기
+
+
+
     public void alarm(View v){
         Intent intent=new Intent(this,screen4.class );
         startActivity(intent);
@@ -52,15 +59,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public void modify(View v){
+        Intent inte = new Intent(this, screen9mypage.class);
+        startActivity(inte);
+    }//내정보 수정하기
+
     public void login(View v){
         Intent inte = new Intent(this, screen1login.class);
         startActivity(inte);
-    }
+    }//로그인 화면으로
 
-    public void Rx(View v){
-        Intent inte = new Intent(this, screen3.class);
-        startActivity(inte);
-    }
+
+
+
 
 
 

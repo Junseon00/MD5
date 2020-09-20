@@ -21,6 +21,11 @@ public class screen2register extends AppCompatActivity {
     Button bt1,  btn_register;
     private EditText et_id, et_pass, et_phone, et_birth;
 
+    public void home(View v){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +35,6 @@ public class screen2register extends AppCompatActivity {
 
 
         //실수로 회원가입 창에 들어왔을 때 뒤로가는 용도
-        bt1 = findViewById(R.id.bt9);
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
         et_phone = findViewById(R.id.et_phone);
@@ -39,14 +43,7 @@ public class screen2register extends AppCompatActivity {
         btn_register = findViewById(R.id.btn_register);
 
 
-        //뒤로 가기
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(screen2register.this, screen1login.class);
-                startActivity(intent);
-            }
-        });
+        //홈으로 가기
 
 
         //회원가입 버튼을 누르면

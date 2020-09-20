@@ -10,16 +10,6 @@
     tools:context=".screen2register">
 
 
-    <Button
-        android:id="@+id/bt9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="10dp"
-        android:text="뒤로"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -85,83 +75,20 @@
                 android:hint="생일"
                 android:inputType="textPersonName" />
 
-            <TextView
-                android:id="@+id/textView2"
+
+
+            <Button
+                android:id="@+id/home2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="50sp"
+                android:text="홈으로"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/scrollView2"
                 android:layout_marginTop="100dp"
-                android:text="추가정보"
-                android:textAlignment="center"
-                android:textSize="30sp" />
+                android:onClick="home"
+                tools:layout_editor_absoluteY="742dp" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:text="본인이 다음 사항에 해당되면 체크해주세요"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:id="@+id/line1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <CheckBox
-                    android:id="@+id/checkBox1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10sp"
-                    android:checked="true"
-                    android:text="고혈압" />
-
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10sp"
-                    android:text="임신중" />
-
-                <CheckBox
-                    android:id="@+id/checkBox4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10sp"
-                    android:text="당뇨" />
-
-                <CheckBox
-                    android:id="@+id/checkBox3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10sp"
-                    android:text="기타" />
-
-                <EditText
-                    android:id="@+id/checkbox3_etc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="30sp"
-                    android:hint="기타 특기사항을 입력해주세요"
-                    android:inputType="textPersonName" />
-
-
-
-
-
-
-                <Button
-                    android:id="@+id/button1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="30sp"
-                    android:text="확인" />
-
-            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_register"
