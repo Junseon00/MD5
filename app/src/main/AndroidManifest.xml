@@ -38,14 +38,14 @@
         <activity android:name=".screen5" />
         <activity android:name=".screen4" />
         <activity android:name=".screen3" />
-        <activity android:name=".screen2register" />
-        <activity android:name=".screen1login" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".screen2register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".screen1login" />
+        <activity android:name=".MainActivity">
         </activity>
         <activity
             android:name=".SplashActivity"

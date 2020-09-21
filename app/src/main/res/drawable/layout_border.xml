@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"  android:layout_height="match_parent" android:layout_width="match_parent">
+
+    <item
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp">
+        <shape android:shape="rectangle" >
+            <stroke
+                android:width="4dp"
+                android:color="@color/secondblue" />
+        </shape>
+    </item>
+
+</layer-list>

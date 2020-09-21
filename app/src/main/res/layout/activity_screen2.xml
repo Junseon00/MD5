@@ -10,30 +10,51 @@
     tools:context=".screen2register">
 
 
-
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/layout_border">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
-            <TextView
-                android:id="@+id/textView1"
+            <!--요기에 약국 로고 만들어 넣기-->
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="100dp"
-                android:text="기본정보"
-                android:textSize="30sp" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/layout_border2">
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="회 원 가 입"
+                    android:textColor="@color/secondblue"
+                    android:textSize="40sp"
+
+                    android:visibility="visible" />
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/et_id"
@@ -41,9 +62,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
+                android:backgroundTint="@color/secondblue"
                 android:ems="10"
                 android:hint="아이디"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColorHint="@color/secondblue"
+                android:textStyle="bold"
+                android:textColor="@color/secondblue"
+                />
 
             <EditText
                 android:id="@+id/et_pass"
@@ -51,9 +77,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/secondblue"
                 android:ems="10"
                 android:hint="비밀번호"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColorHint="@color/secondblue"
+                android:textStyle="bold"
+                android:textColor="@color/secondblue"
+                />
 
             <EditText
                 android:id="@+id/et_phone"
@@ -61,9 +92,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/secondblue"
                 android:ems="10"
                 android:hint="전화번호"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColorHint="@color/secondblue"
+                android:textStyle="bold"
+                android:textColor="@color/secondblue"
+                />
 
             <EditText
                 android:id="@+id/et_birth"
@@ -71,30 +107,43 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/secondblue"
                 android:ems="10"
                 android:hint="생일"
-                android:inputType="textPersonName" />
-
+                android:inputType="textPersonName"
+                android:textColorHint="@color/secondblue"
+                android:textStyle="bold"
+                android:textColor="@color/secondblue"
+                />
 
 
             <Button
+                android:background="@drawable/roundbutton"
                 android:id="@+id/home2"
-                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="200dp"
                 android:layout_height="50sp"
+                android:layout_marginTop="70dp"
+                android:onClick="home"
                 android:text="홈으로"
+                android:textColor="@color/secondblue"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/scrollView2"
-                android:layout_marginTop="100dp"
-                android:onClick="home"
                 tools:layout_editor_absoluteY="742dp" />
 
 
             <Button
+                android:background="@drawable/roundbutton"
                 android:id="@+id/btn_register"
-                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="200dp"
                 android:layout_height="50sp"
+                android:layout_marginTop="10dp"
                 android:text="회원가입"
+                android:textColor="@color/secondblue"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/scrollView2"
