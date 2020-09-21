@@ -117,6 +117,7 @@
                 />
 
 
+            <!-- 홈으로&회원가입 버튼 모양 사인란 느낌으로 구상해보기 -->
             <Button
                 android:background="@drawable/roundbutton"
                 android:id="@+id/home2"
