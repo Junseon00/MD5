@@ -119,14 +119,14 @@
 
             <!-- 홈으로&회원가입 버튼 모양 사인란 느낌으로 구상해보기 -->
             <Button
-                android:background="@drawable/roundbutton"
                 android:id="@+id/home2"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="200dp"
                 android:layout_height="50sp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="70dp"
+                android:background="@drawable/roundbutton"
                 android:onClick="home"
-                android:text="홈으로"
+                android:text="돌아가기"
                 android:textColor="@color/secondblue"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -9,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.PATCH;
@@ -56,6 +57,17 @@ public interface retroAPI {
 
     @GET("drugdata/")
     Call<List<Drug>> get_posts();
+
+    @GET("user/")
+    Call<List<User>> get_logs();
+//
+//    @GET("user/")
+//    Call<List<User>> regist_logs(@Field("id") String id, @Field("pw") String pw, @Field("birth") String birth, @Field("phone") String phone);
+
+
+    @POST("user/")
+    Call<User> regist_logs(@Body User user);
+
 
     @GET("drugdata/{pk}/")
     Call<Drug> get_post_pk(@Path("pk") int pk);
