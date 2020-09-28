@@ -13,11 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Screen11Social">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".LogPopup"
-            android:theme="@android:style/Theme.Dialog"
-            />
-        <activity android:name=".Query"></activity>
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".Query" />
         <activity android:name=".Screen10SearchLog" />
         <activity android:name=".screen9mypage" />
         <activity android:name=".screen8calender" />
@@ -40,17 +46,9 @@
         <activity android:name=".screen3" />
         <activity android:name=".screen2register" />
         <activity android:name=".screen1login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
-
-
-
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"

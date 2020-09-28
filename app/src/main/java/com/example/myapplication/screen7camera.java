@@ -79,17 +79,11 @@ public class screen7camera extends AppCompatActivity {
 
                     //전송 retrofit코드 (& String에 name 변경)
 
-                    //검색 결과 저장
+                    //검색 결과 저장 : prescripton 데이터 베이스에
                     MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(screen7camera.this);
                     SQLiteDatabase db = helper.getWritableDatabase();
 
-                    //table만듦 검색 날짜, 약 이름, 이미지,
-                    String createsql = "CREATE TABLE  IF NOT EXISTS searchlog" +" (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                            "date TEXT," +
-                            "name TEXT," +
-                            "image BLOB);";;
 
-                    db.execSQL(createsql);
 
 
                     db.execSQL("insert into searchlog (date, name, image) values(?,?,?)" ,new Object[]{date,name,image}  );
@@ -125,7 +119,7 @@ public String returnDate(){
     // 현재시간을 date2 변수에 저장한다.
     Date date2 = new Date(now);
     // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
-    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy-MM-dd");
     // String 형식으로 format을 변환해 time에 저장.
     String time = sdfNow.format(date2);
 
