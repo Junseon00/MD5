@@ -1,93 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Screen11Social">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="match_parent"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_Item1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/thirdblue"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="내가 팔로우 중인 친구 목록"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="30dp" />
+            android:text="팔로워" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_Item2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/firstblue"
-            android:orientation="horizontal">
+            android:text="팔로잉" />
 
 
+    </com.google.android.material.tabs.TabLayout>
 
-            <TextView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-                android:gravity="center"
-
-                android:id="@+id/textView24"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:text="어머니"
-                android:textColor="#000000"
-                android:background="@drawable/sampleicon"/>
-
-            <Button
-                android:id="@+id/button16"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:textColor="#FFFFFF"
-                android:background="@color/secondblue"
-                android:text="미션 전송하기!" />
-
-            <Button
-                android:id="@+id/button20"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="0"
-                android:background="#FFFFFF"
-                android:text="미션 목록" />
-
-            <Button
-                android:id="@+id/button19"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="0"
-                android:background="#FFFFFF"
-                android:text="활동내역보기" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+        <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_above="@id/button16"
+        android:layout_height="match_parent" />
 
     <Button
-        android:id="@+id/button21"
+        android:id="@+id/button16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="뒤로가기"
-        android:onClick="toMain"
-        android:background="@color/secondblue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:onClick="toMainScreen"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:text="돌아가기" />
+
+    </RelativeLayout>
+</LinearLayout>
+
+
