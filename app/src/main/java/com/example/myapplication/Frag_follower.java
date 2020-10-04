@@ -1,12 +1,19 @@
 package com.example.myapplication;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +21,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Frag_follower extends Fragment {
-
+    RecyclerView rv;
+    RecyclerView.LayoutManager lm;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,7 +66,58 @@ public class Frag_follower extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_frag_follower, container, false);
+        //리사이클러뷰를 일단 등록
+        rv = (RecyclerView)v.findViewById(R.id.follower);
+        rv.setHasFixedSize(true);
+        lm=new LinearLayoutManager(getActivity());
+        rv.setLayoutManager(lm);
+
+        android.util.Log.d("udb frag_follower","리아시클러뷰 등록. 자료 읽어오기 시작");
+
+
+        //자료들을 가져와 (혹은 만든다)
+        ArrayList<Data_follower> datafollower = new ArrayList<>(); //넣을 리스트
+        try {
+            MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(getActivity());
+            SQLiteDatabase db = helper.getWritableDatabase();
+            String createSQL = "CREATE TABLE IF NOT EXISTS follow (" + "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "follo INTEGER," +
+                    "name TEXT," +
+                    "icon INTEGER);";
+
+            db.execSQL(createSQL);
+            //임시로 데이터 넣기★
+            //db.execSQL("insert into follow (follo,name,icon) values(?,?,?)", new Object[]{0, "아들", 1});
+            //db.execSQL("insert into follow (follo,name,icon) values(?,?,?)", new Object[]{0, "사위", 1});
+            Cursor cursor = db.rawQuery("SELECT _id,name,icon from follow WHERE follo =0;", null);
+
+            //order by _id
+            while (cursor.moveToNext()) {
+                int _id;
+                String name;
+                int icon;
+
+                _id = cursor.getInt(0);
+                name = cursor.getString(1);
+                //icon은 생략
+
+                datafollower.add(new Data_follower(_id, name));//이미지는 안함★
+            }
+            db.close();
+            android.util.Log.d("udb frag_follower.java","db작업 성공");
+        }catch(Exception E){
+            Log.d("udb frag_follower","db 작업 실패");}
+
+        //리사이클러뷰 데이터 전달 및 adapter설정
+        Adapter_follower adapter = new Adapter_follower(datafollower);
+        rv.setAdapter(adapter);
+
+
+
+
+        return v;
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_frag_follower, container, false);
+       // return inflater.inflate(R.layout.fragment_frag_follower, container, false);
     }
 }
