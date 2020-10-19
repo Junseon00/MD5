@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/alarmlist"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="#70A9FF"
             android:gravity="center"
             android:text="복용 약품 기록"
@@ -29,7 +29,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        >
 
         <TextView
             android:id="@+id/textView11"
@@ -54,6 +59,8 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:id="@+id/rcycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -68,7 +75,8 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="복용 내역이 없습니다." />
+        android:text="복용 내역이 없습니다."
+        android:layout_marginBottom="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,14 +85,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="53dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="#ffff"
             android:gravity="center"
             android:onClick="close"
             android:padding="16dp"
             android:text="닫기"
-            android:textColor="#ff7a00"
+            android:textColor="#70A9FF"
             android:textSize="15sp" />
 
 
