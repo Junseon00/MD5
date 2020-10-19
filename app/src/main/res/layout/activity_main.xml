@@ -7,109 +7,120 @@
     android:background="@color/firstblue"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
+        tools:layout_editor_absoluteY="714dp">
 
-        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="건강한 아침이에요!"
-            android:textSize="25sp"
-            android:textColor="#0D173D"
-            android:autoSizeTextType="uniform"/>
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autoSizeTextType="uniform"
+                android:text="건강한 아침이에요!"
+                android:textColor="#0D173D"
+                android:textSize="25sp" />
 
 
-        <ImageView
-            android:layout_width="227dp"
-            android:layout_height="152dp"
-            android:background="@drawable/alyake" />
+            <ImageView
+                android:layout_width="227dp"
+                android:layout_height="152dp"
+                android:background="@drawable/alyake" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
-            android:text="MD5 님,"
-            android:textSize="25sp"
-            android:textColor="#0D173D"
-            android:autoSizeTextType="uniform"/>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:autoSizeTextType="uniform"
+                android:text="MD5 님,"
+                android:textColor="#0D173D"
+                android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="처방전 · 의약품 입력"
-            android:layout_marginBottom="5dp"
-            android:textSize="25sp"
-            android:background="@drawable/wbbutton"
-            android:onClick="Rx"
-            />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/wbbutton"
+                android:onClick="Rx"
+                android:text="처방전 · 의약품 입력"
+                android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:text="과거 의약 기록"
-            android:onClick="toSearchLog"
-            android:textSize="25sp"
-            android:background="@drawable/wbbutton"/>
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/wbbutton"
+                android:onClick="toSearchLog"
+                android:text="과거 의약 기록"
+                android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/button14"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:text="건강 달력"
-            android:textSize="25sp"
-            android:onClick="calender"
-            android:background="@drawable/wbbutton"/>
+            <Button
+                android:id="@+id/button14"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/wbbutton"
+                android:onClick="calender"
+                android:text="건강 달력"
+                android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
-            android:onClick="alarm"
-            android:text="복용 시간 알람"
-            android:textSize="25sp"
-            android:background="@drawable/wbbutton"
-            />
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/wbbutton"
+                android:onClick="alarm"
+                android:text="복용 시간 알람"
+                android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:text="내 정보 수정"
-            android:textSize="25sp"
-            android:textColor="#FFFFFF"
-            android:onClick="modify"
-            android:background="@drawable/bbbutton"/>
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bbbutton"
+                android:onClick="modify"
+                android:text="내 정보 수정"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/button13"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            <Button
+                android:id="@+id/button13"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
 
-            android:onClick="login"
-            android:text="로그아웃"
-            android:textSize="25sp"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/bbbutton"/>/>
-    </LinearLayout>
+                android:background="@drawable/bbbutton"
+                android:onClick="login"
+                android:text="로그아웃"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp" /><![CDATA[
+
+        />
+    ]]>
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

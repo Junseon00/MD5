@@ -4,148 +4,255 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen9mypage">
+    tools:context=".screen9mypage"
+    android:background="@drawable/wrinkled_bg">
 
-
-    <LinearLayout
-        android:id="@+id/layLine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="100dp"
-        android:orientation="horizontal"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:layout_marginTop="100dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textmy1"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="center"
-                android:ems="10"
-                android:text="아이디"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/textmy2"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:ems="10"
-                android:text="비밀번호"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/textmy3"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:ems="10"
-                android:text="전화번호"
-                android:textSize="15sp" />
-
-
-            <TextView
-                android:id="@+id/textmy4"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:ems="10"
-                android:text="생일"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/layout_border">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            >
 
-            <EditText
-                android:id="@+id/textmy5"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="12dp"
-                android:ems="10"
-                android:text="아이디"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textSize="15sp" />
+            <LinearLayout
+                android:id="@+id/layLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-            <EditText
-                android:id="@+id/textmy6"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="12dp"
-                android:ems="10"
-                android:text="비밀번호"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/textmy7"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="12dp"
-                android:ems="10"
-                android:text="전화번호"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textSize="15sp" />
+                android:layout_marginTop="100dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
-            <EditText
-                android:id="@+id/textmy8"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="12dp"
-                android:ems="10"
-                android:text="생일"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textSize="15sp" />
+                <LinearLayout
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="100dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/textmy1"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:ems="10"
+                        android:text="아이디"
+                        android:textSize="15sp"
+                        android:textColor="#000000"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        android:id="@+id/textmy2"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:ems="10"
+                        android:text="비밀번호"
+                        android:textSize="15sp"
+                        android:textColor="#000000"/>
+
+                    <TextView
+                        android:id="@+id/textmy3"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:ems="10"
+                        android:text="전화번호"
+                        android:textSize="15sp"
+                        android:textColor="#000000"/>
+
+
+                    <TextView
+                        android:id="@+id/textmy4"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:ems="10"
+                        android:text="생일"
+                        android:textSize="15sp"
+                        android:textColor="#000000"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/textmy5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="8dp"
+
+                        android:backgroundTint="@color/secondblue"
+                        android:ems="10"
+                        android:text="아이디"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="15sp"
+                        android:textColorHint="@color/secondblue"
+                        android:textStyle="bold"
+                        android:textColor="@color/secondblue"/>
+
+                    <EditText
+                        android:id="@+id/textmy6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="@color/secondblue"
+                        android:ems="10"
+                        android:layout_marginTop="12dp"
+                        android:text="비밀번호"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="15sp"
+                        android:textColorHint="@color/secondblue"
+                        android:textStyle="bold"
+                        android:textColor="@color/secondblue"/>
+
+                    <EditText
+                        android:id="@+id/textmy7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="@color/secondblue"
+                        android:ems="10"
+                        android:layout_marginTop="12dp"
+                        android:text="전화번호"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="15sp"
+                        android:textColorHint="@color/secondblue"
+                        android:textStyle="bold"
+                        android:textColor="@color/secondblue"/>
+
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="@color/secondblue"
+                        android:ems="10"
+                        android:layout_marginTop="12dp"
+                        android:text="생일"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="15sp"
+                        android:textColorHint="@color/secondblue"
+                        android:textStyle="bold"
+                        android:textColor="@color/secondblue"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginRight="15dp">
+
+                    <Button
+                        android:id="@+id/btmy1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:ems="10"
+                        android:text=" "
+                        android:textSize="15sp" />
+
+                    <Button
+                        android:id="@+id/btmy2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:ems="10"
+                        android:text="바꾸기"
+                        android:textSize="15sp"
+                        android:textColor="@color/secondblue"
+                        android:background="@drawable/roundbutton"/>
+
+                    <Button
+                        android:id="@+id/btmy3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:ems="10"
+                        android:text="바꾸기"
+                        android:textSize="15sp"
+                        android:textColor="@color/secondblue"
+                        android:background="@drawable/roundbutton"/>
+
+
+                    <Button
+                        android:id="@+id/btmy4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:ems="10"
+                        android:text="바꾸기"
+                        android:textSize="15sp"
+                        android:textColor="@color/secondblue"
+                        android:background="@drawable/roundbutton"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
 
             <Button
-                android:id="@+id/btmy1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
-                android:text=" "
-                android:textSize="15sp" />
+                android:id="@+id/button18"
+                android:layout_width="200dp"
+                android:layout_height="50sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/roundbutton"
+                android:text="홈으로"
+                android:textColor="@color/secondblue"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="home"
+                app:layout_constraintTop_toBottomOf="@id/layLine" />
 
+<<<<<<< HEAD
             <Button
                 android:id="@+id/changePw"
                 android:layout_width="wrap_content"
@@ -166,51 +273,25 @@
                 android:onClick="changePhone"
                 android:textSize="15sp" />
 
+=======
 
             <Button
-                android:id="@+id/btmy4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:ems="10"
-                android:text="바꾸기"
-                android:textSize="15sp" />
+                android:background="@drawable/roundbutton"
+                android:id="@+id/button17"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="200dp"
+                android:layout_height="50sp"
+                android:layout_marginTop="10dp"
+                android:text="확인"
+                android:textColor="@color/secondblue"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button18" />
+>>>>>>> 260d27ac4a8a4317b9f83ef36f0a5b9273710081
+
 
         </LinearLayout>
-
-
-
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/button18"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="홈으로"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="home"
-        app:layout_constraintTop_toBottomOf="@id/layLine" />
-
-
-    <Button
-        android:id="@+id/button17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="확인"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button18" />
-
-
-
-
-
-
-
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
