@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -12,8 +14,11 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -21,6 +26,7 @@ public interface retroAPI {
 
 
     //ngrok 경로에 가서 ngrok http 8000 하고 주소 업데이트(Net에도)
+
     public static final String API_URL = "http://13.125.80.169:8000/";
     //--------------------------------- B
 
@@ -42,7 +48,22 @@ public interface retroAPI {
     @POST("user/")
     Call<User> createUser(@Body User user);
 
+    //이미지 업로드용 POST
+    @POST("image/")
+    Call<ImageType> postImage(@Body ImageType image);
 
+
+    @Multipart
+    @POST("image/")
+    Call<ImageType> postImg(@Part("id") int id,
+                            @Part MultipartBody.Part Image
+
+    );
+
+    @GET("prescription/")
+    Call<List<Prescription>> get_pres();
+
+    //Call<List<Prescription>> getPres(@Query("idi") int idi, @Query("user_id") String user_id, @Query("doctor_number") String doctor_number, @Query("drug_name") String drug_name, @Query("dose_size") float dose_size, @Query("dose_num") int dose_num, @Query("dose_day") int dose_day);
 
 
 
@@ -55,18 +76,36 @@ public interface retroAPI {
     @DELETE("/drugdata/{pk}/")
     Call<Drug> delete_posts(@Path("pk") int pk);
 
+    //약물 정보 받아오기
     @GET("drugdata/")
     Call<List<Drug>> get_posts();
 
+    //로그인
     @GET("user/")
     Call<List<User>> get_logs();
+
+
 //
 //    @GET("user/")
 //    Call<List<User>> regist_logs(@Field("id") String id, @Field("pw") String pw, @Field("birth") String birth, @Field("phone") String phone);
 
-
+    //회원가입
     @POST("user/")
     Call<User> regist_logs(@Body User user);
+
+    //아래로는 정보바꾸기
+
+    //1. 비밀번호 바꾸기
+    @PUT("user/{id}")
+    Call<User> change_pw(@Path("id") String id, @Body User user);
+
+    //2. 생일? 바꿀까?
+    //@PUT("user/{birth}")
+    //Call<User> change_email(@Path("email") String email, @Body User user);
+
+    //3. 전화 번호 바꾸기
+    @PUT("user/{id}")
+    Call<User> change_phone(@Path("id") String id, @Body User user);
 
 
     @GET("drugdata/{pk}/")

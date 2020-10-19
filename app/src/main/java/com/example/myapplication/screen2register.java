@@ -28,10 +28,13 @@ public class screen2register extends AppCompatActivity implements View.OnClickLi
 //
 
 
+    //이름 형식이랑 넣어야함
+
 
     private final String TAG = getClass().getSimpleName();
 
-    private final String BASE_URL = "http://13.125.80.169:8000/";
+    private final String BASE_URL = "http://93d88262859b.ngrok.io/";
+    //private final String BASE_URL = "http://13.125.80.169:8000/";
     retroAPI regApi;
 
     Intent intent = new Intent(this, screen1login.class);
@@ -79,6 +82,7 @@ public class screen2register extends AppCompatActivity implements View.OnClickLi
 
     private void initMyAPI(String baseUrl) {
 
+        //서버에 대한 로그를 더 자세히 얻기 위한 코드
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
@@ -94,18 +98,89 @@ public class screen2register extends AppCompatActivity implements View.OnClickLi
     }
 
     public void onClick(View v) {
-        if (v == btn_register) {
-            final String id = et_id.getText().toString();
-            final String pass = et_pass.getText().toString();
-            final String phone = et_phone.getText().toString();
-            final String birth = et_birth.getText().toString();
+                if (v == btn_register) {
+                    final String id = et_id.getText().toString();
+                    final String pass = et_pass.getText().toString();
+                    final String phone = et_phone.getText().toString();
+                    final String birth = et_birth.getText().toString();
 
-            if (TextUtils.isEmpty(id)) {
-                et_id.setError("아이디를 써주세요");
+                    if (TextUtils.isEmpty(id)) {
+                        et_id.setError("아이디를 써주세요");
+                    }
+                    if(id.length()<8){
+                        et_id.setError("아이디는 8자 이상으로 써주세요");
+                    }
+
+
+                    if (TextUtils.isEmpty(pass)) {
+                        et_pass.setError("비밀번호를 써주세요");
+                    }
+                    if(pass.length()<8||pass.length()>20){
+                        et_id.setError("비밀번호는 8자 이상, 20자 이하로 써주세요");
+                    }
+
+                    byte[] passCheck = new byte[pass.length()];
+                    passCheck = pass.getBytes();
+
+                    int cnt=0;
+
+            boolean upper = false;
+            boolean down = false;
+            boolean special = false;
+            boolean num = false;
+            boolean passError = false;
+
+            /*
+            for(int i=0; i<passCheck.length ; i++){
+
+
+                if(65 <= passCheck[i] && passCheck[i] <= 90){
+                    //대문자가 있는지 검사
+                    upper = true;
+                }else if(97 <= passCheck[i] && passCheck[i] <= 122){
+                    //소문자 검사
+                    down = true;
+                }else if((21<= passCheck[i] && passCheck[i] <= 26)||(63<= passCheck[i] && passCheck[i] <= 64)||(passCheck[i] == 94)){
+                    //특수문자 검사
+                    //! " # $ % & ? @ ^ 만 허용
+                    special = true;
+
+                }else if(30<= passCheck[i] && passCheck[i] <= 39){
+                    //숫자가 있는지 검사
+                    num = true;
+
+                }else{
+                    //다른 문자의 경우
+                    passError = true;
+                }
+
             }
-            if (TextUtils.isEmpty(pass)) {
-                et_pass.setError("비밀번호를 써주세요");
+
+            if(upper==true){
+                cnt++;
             }
+            if(down==true){
+                cnt++;
+            }
+            if(special==true){
+                cnt++;
+            }
+            if(num==true){
+                cnt++;
+            }
+
+            if(cnt<3||passError==true){
+                et_pass.setError("비밀번호는 영문 대소문자, 특수문자(!\"#$%^@^), 숫자 중 3개 이상을 조합하여 8자 이상으로 써주세요");
+            }
+
+
+             */
+
+
+
+
+
+
             if (TextUtils.isEmpty(phone)) {
                 et_phone.setError("전화번호를 써주세요");
             }

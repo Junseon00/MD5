@@ -147,21 +147,23 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/btmy2"
+                android:id="@+id/changePw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:ems="10"
                 android:text="바꾸기"
+                android:onClick="changePw"
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/btmy3"
+                android:id="@+id/changePhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:ems="10"
                 android:text="바꾸기"
+                android:onClick="changePhone"
                 android:textSize="15sp" />
 
 
