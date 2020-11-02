@@ -96,7 +96,7 @@ public class Frag_following extends Fragment {
 
             db.execSQL(createSQL);
             //임시로 데이터 넣기★
-            //db.execSQL("insert into follow (follo,name,icon) values(?,?,?)", new Object[]{1, "할머니", 1});
+            db.execSQL("insert into follow (follo,name,icon) values(?,?,?)", new Object[]{1, "할머니", 1});
             Cursor cursor = db.rawQuery("SELECT _id,name,icon from follow WHERE follo =1;", null);
 
             //order by _id
