@@ -252,7 +252,7 @@
                 android:onClick="home"
                 app:layout_constraintTop_toBottomOf="@id/layLine" />
 
-<<<<<<< HEAD
+
             <Button
                 android:id="@+id/changePw"
                 android:layout_width="wrap_content"
@@ -273,7 +273,6 @@
                 android:onClick="changePhone"
                 android:textSize="15sp" />
 
-=======
 
             <Button
                 android:background="@drawable/roundbutton"

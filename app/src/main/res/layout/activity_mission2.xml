@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/mint">
+
+    <!-- 타이틀바 -->
+    <!-- //end 타이틀바 -->
+
+    <!-- Notice -->
+    <LinearLayout
+        android:padding="24dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:alpha="0.87"
+            android:gravity="center"
+
+            android:paddingBottom="20dp"
+            android:text="환자분에게 따뜻한 메시지를 보내보세요 !"
+            android:fontFamily="@font/lmd_bold"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#006C69"
+                android:textSize="20sp"
+                android:id="@+id/radioMorning"
+                android:text="아침 인사"/>
+            <RadioButton
+                android:textSize="20sp"
+                android:textColor="#006C69"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioAfter"
+                android:text="저녁 인사"/>
+            <RadioButton
+                android:textSize="20sp"
+                android:textColor="#006C69"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioLove"
+                android:text="애정 표현하기"/>
+            <RadioButton
+                android:textSize="20sp"
+                android:textColor="#006C69"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radiohumor"
+                android:text="농담 보내기"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#90FFFFFF"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="작성완료!" />
+
+    </LinearLayout>
+    <!-- Notice -->
+
+    <!-- 닫기 버튼 -->
+    <!--// 닫기 버튼 -->
+</LinearLayout>
