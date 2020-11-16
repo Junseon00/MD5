@@ -65,11 +65,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>>
+        </activity>
 
         <activity android:name=".MainActivity" >
 
-        </activity>>
+        </activity>
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"

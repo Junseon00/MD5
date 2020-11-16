@@ -10,15 +10,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#ffffff">
 
         <TextView
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_gravity="center_vertical"
-            android:text="나를 보호해주는 사람들" />
+            android:layout_gravity="center"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="나의 돌보미"
+            android:textColor="#000000"
+            android:textSize="25dp" />
 
         <View
             android:layout_width="0dp"
@@ -31,14 +37,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/rounded_thirdblue"
             android:textColor="#ffffff"
-            android:layout_gravity="right"
-            android:text="추가하기" />
+            android:text="추가\n하기"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="18dp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/follower"
         android:layout_height="match_parent" />
 </LinearLayout>
