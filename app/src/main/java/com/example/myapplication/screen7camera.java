@@ -54,6 +54,8 @@ public class screen7camera extends AppCompatActivity {
     retroAPI imageApi;
 
 
+    int flag = 1;
+    int count = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,10 +148,10 @@ public class screen7camera extends AppCompatActivity {
 
 
                     //RequestBody userID = RequestBody.create(MediaType.parse("multipart/form-data"), "1243");
-                    final int id = 777;
+                    final int id1 = 777;
 
                     //ImageType posting = new ImageType(id, Imaged);
-                    Call<ImageType> call1 = imageApi.postImg(id, body);
+                    Call<ImageType> call1 = imageApi.postImg(id1, body);
                     call1.enqueue(new Callback<ImageType>() {
                         @Override
                         public void onResponse(Call<ImageType> call, Response<ImageType> response) {
@@ -181,21 +183,91 @@ public class screen7camera extends AppCompatActivity {
 
                         //db.execSQL("insert into searchlog (date, name, image) values(?,?,?)" ,new Object[]{date,name,image}  );
                         //db.close();
-                    });
+                    });//업로드
+
+                    //5초 대기
+                    Thread.sleep(5000);
 
                     Log.d("알람으로 쓰기위해...","GET");
+
+                    //flag가 1인동안 시도
+                    while(flag==1){
+                        Call<List<Prescription>> getCall = imageApi.get_pres();
+                        getCall.enqueue(new Callback<List<Prescription>>() {
+                            @Override
+                            public void onResponse(Call<List<Prescription>> call, Response<List<Prescription>> response) {
+                                if(response.isSuccessful()){
+                                    flag=0;
+                                    Toast.makeText(getApplicationContext(),"연결성공", Toast.LENGTH_SHORT).show();
+                                    List<Prescription> mList = response.body();
+                                    String result ="0";
+                                    for( Prescription item : mList){
+                                        String name = item.getDrug_name();
+                                        int idi = item.getIdi();
+
+
+                                        //idi와 일치할 경우
+                                        if(idi == id1){
+                                            result += "약물 이름 : " + item.getDrug_name() + "/복용 날짜 : " + item.getDose_day() + "\n\n";
+                                        }
+
+                                    }
+
+                                    Log.d("알람으로 쓰기위해",result + response.body());
+
+
+                                }else {
+                                    Toast.makeText(getApplicationContext(),"연결은 되었으나", Toast.LENGTH_SHORT).show();
+                                    //Log.d("","Status Code : " + response.code() + response.body());
+
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<Prescription>> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(),"error2", Toast.LENGTH_SHORT).show();
+                                //Log.d(TAG,"Fail msg : " + t.getMessage());
+                            }
+
+                        });
+
+                        //10회이상 실패시.. 그냥 빠져나감
+                        //3초기다리고 다시 시도
+                        Thread.sleep(3000);
+                        count --;
+
+                    }
+
+                    Toast.makeText(getApplicationContext(),"정보를 처리하는 데에 오류가 있었습니다.", Toast.LENGTH_SHORT).show();
+
+                    //팝업 띄우기
+
+
+                    //다시시도
+
+
+                    //홈으로
+
+                    Intent intent = new Intent(screen7camera.this, MainActivity.class);
+
+
+
+                    /*
                     Call<List<Prescription>> getCall = imageApi.get_pres();
                     getCall.enqueue(new Callback<List<Prescription>>() {
                         @Override
                         public void onResponse(Call<List<Prescription>> call, Response<List<Prescription>> response) {
-                            if( response.isSuccessful()){
+                            if(response.isSuccessful()){
                                 Toast.makeText(getApplicationContext(),"연결성공", Toast.LENGTH_SHORT).show();
                                 List<Prescription> mList = response.body();
                                 String result ="0";
                                 for( Prescription item : mList){
                                     String name = item.getDrug_name();
-                                    int id = item.getIdi();
-                                    if(id == 1){
+                                    int idi = item.getIdi();
+
+
+                                    //idi와 일치할 경우
+                                    if(idi == id1){
                                         result += "약물 이름 : " + item.getDrug_name() + "/복용 날짜 : " + item.getDose_day() + "\n\n";
                                     }
 
@@ -217,6 +289,9 @@ public class screen7camera extends AppCompatActivity {
                         }
 
                     });
+
+                    */
+
 
 
 

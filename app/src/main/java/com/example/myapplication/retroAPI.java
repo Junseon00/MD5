@@ -34,6 +34,10 @@ public interface retroAPI {
     @GET("user/")
     Call<List<User>> user(@Query("id") String id, @Query("pw") String pw);
 
+    //팔로잉/팔로우 서치용 GET
+    @GET("user/")
+    Call<List<User>> get_users();
+
 
     //약물 받아오기
     @GET("drugdata/")
@@ -63,7 +67,8 @@ public interface retroAPI {
     @GET("prescription/")
     Call<List<Prescription>> get_pres();
 
-    //Call<List<Prescription>> getPres(@Query("idi") int idi, @Query("user_id") String user_id, @Query("doctor_number") String doctor_number, @Query("drug_name") String drug_name, @Query("dose_size") float dose_size, @Query("dose_num") int dose_num, @Query("dose_day") int dose_day);
+
+    //getPres(@Query("idi") int idi, @Query("user_id") String user_id, @Query("drug_name") String drug_name, @Query("dose_size") String dose_size, @Query("dose_num") String dose_num, @Query("dose_day") String dose_day);
 
 
 

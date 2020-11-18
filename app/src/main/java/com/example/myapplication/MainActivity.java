@@ -80,15 +80,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //로그아웃
+    public void logout(View v) {
+        Intent it = new Intent(this, screen1login.class);
+        startActivity(it);
+    }
+
 
     //**효원 작업중 부분**//
 
 //    Activity page = this;
 
-//    public void logout(View v){
-//
-//        Intent it = new Intent(page,screen1.class);
-//        startActivity(it);
+
 //
 //
 //// 보류..

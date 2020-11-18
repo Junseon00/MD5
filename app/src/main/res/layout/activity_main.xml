@@ -112,7 +112,7 @@
                 android:layout_gravity="center"
 
                 android:background="@drawable/bbbutton"
-                android:onClick="login"
+                android:onClick="logout"
                 android:text="로그아웃"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp" /><![CDATA[
