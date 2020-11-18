@@ -36,6 +36,7 @@ public class Adapter_followerRequest {
         this.followerRequests = data_followerRequests;
     }
 
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -68,5 +69,7 @@ public class Adapter_followerRequest {
     public int getItemCount() {
         return followerRequests.size();
     }
+
+
 
 }
