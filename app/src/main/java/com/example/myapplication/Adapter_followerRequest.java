@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Adapter_followerRequest {
+public class Adapter_followerRequest extends RecyclerView.Adapter< Adapter_followerRequest.RViewHolder> {
     private Context context;
 
     public static class RViewHolder extends RecyclerView.ViewHolder {
@@ -38,7 +38,7 @@ public class Adapter_followerRequest {
 
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Adapter_followerRequest.RViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.follower_request_item, parent, false);
 
@@ -46,7 +46,7 @@ public class Adapter_followerRequest {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(Adapter_followerRequest.RViewHolder holder, int position) {
 
         Adapter_followerRequest.RViewHolder myViewHolder = (Adapter_followerRequest.RViewHolder) holder;
 

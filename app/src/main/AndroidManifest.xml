@@ -20,18 +20,19 @@
             android:name=".Mission1"
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Test">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".mission_popup"
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Missions" />
         <activity android:name=".Screen11Social" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".LogPopup"
@@ -60,11 +61,7 @@
         <activity android:name=".screen2register" />
         <activity android:name=".screen1login" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".MainActivity" >
