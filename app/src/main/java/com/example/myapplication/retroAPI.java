@@ -27,7 +27,7 @@ public interface retroAPI {
 
     //ngrok 경로에 가서 ngrok http 8000 하고 주소 업데이트(Net에도)
 
-    public static final String API_URL = "http://13.125.80.169:8000/";
+    public static final String API_URL = "https://73b8ab351527.ngrok.io/";
     //--------------------------------- B
 
     //로그인용 GET
@@ -60,7 +60,8 @@ public interface retroAPI {
     @Multipart
     @POST("image/")
     Call<ImageType> postImg(@Part("id") int id,
-                            @Part MultipartBody.Part Image
+                            @Part MultipartBody.Part Image,
+                            @Part("user_id") String uid
 
     );
 

@@ -21,7 +21,7 @@ public class Net {
 
     //ngrok2 주소 업데이트해줘야함(retroAPI에도)
     private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://13.125.80.169:8000/")
+            .baseUrl("https://73b8ab351527.ngrok.io/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

@@ -43,18 +43,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
 public class screen7camera extends AppCompatActivity {
 
     ImageView iv;
     Button send;
     Button takephoto;
 
-    private final String BASE_URL = "http://016b5cea4870.ngrok.io";
+    private final String BASE_URL = "https://73b8ab351527.ngrok.io/";
     retroAPI imageApi;
 
-
-    int flag = 1;
+    static int flag = 1;
     int count = 10;
 
     @Override
@@ -66,12 +64,11 @@ public class screen7camera extends AppCompatActivity {
         send = (Button)findViewById(R.id.button10);
         send.setVisibility(View.INVISIBLE);
 
-
-
         initMyAPI(BASE_URL);
 
     }
 
+    //retrofit 기동
     private void initMyAPI(String baseUrl) {
 
         //서버에 대한 로그를 더 자세히 얻기 위한 코드
@@ -90,8 +87,6 @@ public class screen7camera extends AppCompatActivity {
     }
 
 
-
-
     //카메라를 키는 인텐트
     public void camera(View v){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -99,10 +94,10 @@ public class screen7camera extends AppCompatActivity {
 
     }
 
-
     //카메라 결과
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        flag=1;
         super.onActivityResult(requestCode, resultCode, data);
         iv= (ImageView)findViewById(R.id.iv);
         iv.setImageURI(data.getData());
@@ -118,6 +113,7 @@ public class screen7camera extends AppCompatActivity {
             public void onClick(View v) {
                 //서버로 전송하는 코드 넣기;
                 try{
+                    Log.d("MYTAG", "지금 1 flag = "+flag);
                     Log.d("udb 서버에 send","try메시 쪽에는 들어옴");
                     ////날짜, 약 이름, 찍은 이미지
                     String date = returnDate();
@@ -125,198 +121,127 @@ public class screen7camera extends AppCompatActivity {
                     Bitmap image = (Bitmap)data.getExtras().get("data");
                     String myImg = getStringFromBitmap(image);
 
-                    Log.d("서버센드", myImg);
+                    //Log.d("서버센드", myImg);
                     String ss = getBase64decode(myImg);
                     //Log.d("서버센드", ss);
 
-
-
-                    //File file = new File(String.valueOf(data.getData()));
+                    //촬영한 파일을 비트맵 이미지로 바꿔서, 레트로핏에 맞게 처리함
                     File file = savebitmap(image);
                     RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
                     MultipartBody.Part body = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
 
-                    //json object~
-                    JSONObject Imaged = new JSONObject();
+                    //사진에 고유한 아이디 부여 : id1
+                    final int id1 = (int)(Math.random()*1000)+1;
+                    Log.d("id1 정보", id1+"입니다");
 
-                    try{
-                        Imaged.put("image",myImg);
+                    //맨처음 : 이미지를 서버로 보냄
+                    if(flag==1){
+                        flag=11;
+                        Call<ImageType> call1 = imageApi.postImg(id1, body,"hyowon");
+                        call1.enqueue(new Callback<ImageType>() {
 
-                    } catch (JSONException e1) {
-                        e1.printStackTrace();
-                    }
+                            @Override
+                            public void onResponse(Call<ImageType> call, Response<ImageType> response) {
+                                Log.d("MYTAG", "일단.. 진입");
+                                if (!response.isSuccessful()) {
+                                    android.util.Log.d("서버센드", "Status Code : " + response.code());
+                                    Toast.makeText(getApplicationContext(), " 실패", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
 
 
-                    //RequestBody userID = RequestBody.create(MediaType.parse("multipart/form-data"), "1243");
-                    final int id1 = 777;
+                                ImageType posted = response.body();
 
-                    //ImageType posting = new ImageType(id, Imaged);
-                    Call<ImageType> call1 = imageApi.postImg(id1, body);
-                    call1.enqueue(new Callback<ImageType>() {
-                        @Override
-                        public void onResponse(Call<ImageType> call, Response<ImageType> response) {
-                            if (!response.isSuccessful()) {
-                                android.util.Log.d("서버센드", "Status Code : " + response.code());
-                                Toast.makeText(getApplicationContext(), " 실패", Toast.LENGTH_SHORT).show();
-                                return;
+                                String content = "";
+                                content += "Id: " + posted.getId() + "\n";
+                                Toast.makeText(getApplicationContext(), content + " 가 업로드되었습니다", Toast.LENGTH_SHORT).show();
+
+
                             }
-                            ImageType posted = response.body();
 
-                            String content = "";
-                            content += "Id: " + posted.getId() + "\n";
-                            Toast.makeText(getApplicationContext(), content + " 가 업로드되었습니다", Toast.LENGTH_SHORT).show();
-                        }
+                            @Override
+                            public void onFailure(Call<ImageType> call, Throwable t) {
 
-                        @Override
-                        public void onFailure(Call<ImageType> call, Throwable t) {
+                                Log.d("MYTAG", t.getMessage()+t.getLocalizedMessage());
+                                Toast.makeText(getApplicationContext(), "error1 연결은 됐지만..."+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
 
-                            Log.d("MYTAG", t.getMessage()+t.getLocalizedMessage());
-                            Toast.makeText(getApplicationContext(), "error1 연결은 됐지만..."+t.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-
-                        //전송 retrofit코드 (& String에 name 변경)
-
-                        //검색 결과 저장 : prescripton 데이터 베이스에
-                        //MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(screen7camera.this);
-                        //SQLiteDatabase db = helper.getWritableDatabase();
+                            //전송 retrofit코드 (& String에 name 변경)
+                            //검색 결과 저장 : prescripton 데이터 베이스에
+                            //MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(screen7camera.this);
+                            //SQLiteDatabase db = helper.getWritableDatabase();
 
 
-                        //db.execSQL("insert into searchlog (date, name, image) values(?,?,?)" ,new Object[]{date,name,image}  );
-                        //db.close();
-                    });//업로드
+                            //db.execSQL("insert into searchlog (date, name, image) values(?,?,?)" ,new Object[]{date,name,image}  );
+                            //db.close();
 
-                    //5초 대기
-                    Thread.sleep(5000);
+                        });//업로드
 
-                    Log.d("알람으로 쓰기위해...","GET");
+                        //자동으로 클릭해줌
+                        send.performClick();
 
-                    //flag가 1인동안 시도
-                    while(flag==1){
+                        //두번째 : 고유한 아이디에 따라 prescription 데이터베이스에서 정보를 가져옴
+                    }else if(flag==11){
+                        flag=79;
                         Call<List<Prescription>> getCall = imageApi.get_pres();
                         getCall.enqueue(new Callback<List<Prescription>>() {
                             @Override
                             public void onResponse(Call<List<Prescription>> call, Response<List<Prescription>> response) {
                                 if(response.isSuccessful()){
-                                    flag=0;
-                                    Toast.makeText(getApplicationContext(),"연결성공", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"2번째연결성공", Toast.LENGTH_SHORT).show();
                                     List<Prescription> mList = response.body();
                                     String result ="0";
                                     for( Prescription item : mList){
                                         String name = item.getDrug_name();
                                         int idi = item.getIdi();
 
-
                                         //idi와 일치할 경우
-                                        if(idi == id1){
+                                        if(idi == 1){
                                             result += "약물 이름 : " + item.getDrug_name() + "/복용 날짜 : " + item.getDose_day() + "\n\n";
                                         }
-
                                     }
-
-                                    Log.d("알람으로 쓰기위해",result + response.body());
-
-
+                                    Log.d("알람으로 쓰기위해",result);
+                                    send.performClick();
                                 }else {
                                     Toast.makeText(getApplicationContext(),"연결은 되었으나", Toast.LENGTH_SHORT).show();
                                     //Log.d("","Status Code : " + response.code() + response.body());
-
                                 }
                             }
-
                             @Override
                             public void onFailure(Call<List<Prescription>> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(),"error2", Toast.LENGTH_SHORT).show();
-                                //Log.d(TAG,"Fail msg : " + t.getMessage());
+                                Toast.makeText(getApplicationContext(),"error2"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                                Log.d("333","Fail msg : " + t.getMessage());
                             }
-
                         });
 
-                        //10회이상 실패시.. 그냥 빠져나감
-                        //3초기다리고 다시 시도
-                        Thread.sleep(3000);
-                        count --;
-
+                    }else{
+                        //빠져나가기...
+                        Log.d("flag",flag+"이거임");
                     }
-
-                    Toast.makeText(getApplicationContext(),"정보를 처리하는 데에 오류가 있었습니다.", Toast.LENGTH_SHORT).show();
-
-                    //팝업 띄우기
-
-
-                    //다시시도
-
-
-                    //홈으로
-
-                    Intent intent = new Intent(screen7camera.this, MainActivity.class);
-
-
-
-                    /*
-                    Call<List<Prescription>> getCall = imageApi.get_pres();
-                    getCall.enqueue(new Callback<List<Prescription>>() {
-                        @Override
-                        public void onResponse(Call<List<Prescription>> call, Response<List<Prescription>> response) {
-                            if(response.isSuccessful()){
-                                Toast.makeText(getApplicationContext(),"연결성공", Toast.LENGTH_SHORT).show();
-                                List<Prescription> mList = response.body();
-                                String result ="0";
-                                for( Prescription item : mList){
-                                    String name = item.getDrug_name();
-                                    int idi = item.getIdi();
-
-
-                                    //idi와 일치할 경우
-                                    if(idi == id1){
-                                        result += "약물 이름 : " + item.getDrug_name() + "/복용 날짜 : " + item.getDose_day() + "\n\n";
-                                    }
-
-                                }
-
-                                Log.d("알람으로 쓰기위해",result + response.body());
-
-
-                            }else {
-                                Toast.makeText(getApplicationContext(),"연결은 되었으나", Toast.LENGTH_SHORT).show();
-                                //Log.d("","Status Code : " + response.code() + response.body());
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<Prescription>> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(),"error2", Toast.LENGTH_SHORT).show();
-                            //Log.d(TAG,"Fail msg : " + t.getMessage());
-                        }
-
-                    });
-
-                    */
-
-
-
-
-
-
-
-
                 }
                 catch(Exception e1){
                     Log.d("udb 서버에 send","서버에 사진을 보내는 try- catch문에 에러 발생");
                 }
-
+                Log.d("알람으로 쓰기위해","나갑니다");
             }
         });
         //------------------------------------------------------------------------------------------
-
 
 
         //사진 찍기는 이제 다시 찍기로 설정
         takephoto =(Button)findViewById(R.id.button9);
         takephoto.setText("사진 다시 찍기");
 
+        //여기서 병용 금기 약물을 비교하시겠습니까?
+        //받은 약 정보를 compare에 넣어서..
+        //그걸 서버 병용금기 db에 GET
+
+
+        //알람으로 등록하시겠습니까? 팝업띄우기(나중에..)
 
 
     }
+
 
     private File savebitmap(Bitmap bmp) {
         String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
@@ -362,6 +287,37 @@ public class screen7camera extends AppCompatActivity {
 
     }
 
+    /*
+    //함수 설명
+    //"A,B,C"형태로 약물 목록(A,B,C)을 string형식 파라미터로 전달해주면
+    //쪼갠뒤 기존의 복용중인 약품과 둘씩 짝지음
+    //지금은 짝지은뒤 아무것도 하지 않고 TOast로 메시지만 보여주지만
+    //두개씩 짝지은 녀석들을 서버로 보내 무언가 할 수있을 것.
+    public void compare(String medicstring){
+        String[] mediclist = medicstring.split(","); //"a,b,c"를 ["a","b","c"]로 쪼갠다
+
+        //db에서 모든 복용죽 약품 불러옴. prescription table은 약품 검색 기록 저장
+        MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select pills  from prescription WHERE taking = '복용중' order by _id ",null); //검색 내역도 "d,e,f"형식으로 저장되어있다
+
+        while(cursor.moveToNext()) {
+            String[] takinglist = cursor.getString(0).split(","); //"d,e,f" -> ["d","e","f"]
+            for (int i = 0; i < mediclist.length; i++) {
+                String a = mediclist[i]; //비교대상, 새로 인식한 "A"
+                for (int j = 0; j<takinglist.length ; j++){
+                    String b = takinglist[j];
+                    //실제상황이면 if  ※!a.equal(b)※ 필요 a!=b여야 비교하는 의미가 있지
+                    //이제 a,b를 반복해서 서버로 보내면 된다.
+                    Toast.makeText(this, "서버로 보낼 , 새로 인식한 a="+a+"복용중이던 b"+b, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }//end of cursor
+
+    }
+
+
+     */
 
 
     public String returnDate(){
@@ -378,11 +334,6 @@ public class screen7camera extends AppCompatActivity {
         return  time;
 
     }
-
-
-
-
-
 
 
 }
