@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-public class Data_followerRequest {
+public class Data_friendRequest {
     private int id;
     private String name;//신분
     private String phone;//전화번호
@@ -17,6 +17,6 @@ public class Data_followerRequest {
     //public void setImg(Image img){this.img = img;}★
 
     //생성자
-    public Data_followerRequest(int id,String name,String phone){this.name = name; this.id = id; this.phone=phone;//★이미지는 아직
+    public Data_friendRequest(int id, String name, String phone){this.name = name; this.id = id; this.phone=phone;//★이미지는 아직
     }
 }

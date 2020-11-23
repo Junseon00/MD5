@@ -30,9 +30,9 @@ public class Adapter_followerRequest extends RecyclerView.Adapter< Adapter_follo
     }
 
     //관리할 자료 리스트!
-    private ArrayList<Data_followerRequest> followerRequests;
+    private ArrayList<Data_friendRequest> followerRequests;
 
-    Adapter_followerRequest(ArrayList<Data_followerRequest> data_followerRequests){
+    Adapter_followerRequest(ArrayList<Data_friendRequest> data_followerRequests){
         this.followerRequests = data_followerRequests;
     }
 
