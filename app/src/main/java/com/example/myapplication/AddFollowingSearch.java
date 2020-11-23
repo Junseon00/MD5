@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 import android.widget.EditText;
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,7 +10,6 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class AddFollowingSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_add_following_search);
+        setContentView(R.layout.activity_add_friend_search);
 
         mEdit = findViewById(R.id.edit);
 

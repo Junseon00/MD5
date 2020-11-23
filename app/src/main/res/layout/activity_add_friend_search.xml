@@ -18,7 +18,7 @@
             android:layout_height="40dp"
             android:background="@drawable/toprounded"
             android:gravity="center|center_vertical"
-            android:text="사용자 찾기"
+            android:text="돌보미 찾기"
             android:textColor="#fff"
             android:textSize="25sp" />
     </LinearLayout>
