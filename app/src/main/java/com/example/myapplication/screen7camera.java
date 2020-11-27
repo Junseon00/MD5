@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
@@ -54,6 +55,8 @@ public class screen7camera extends AppCompatActivity {
 
     static int flag = 1;
     int count = 10;
+    String thisPill = null;
+    String thisNum = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,14 +169,7 @@ public class screen7camera extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "error1 연결은 됐지만..."+t.getMessage(), Toast.LENGTH_SHORT).show();
                             }
 
-                            //전송 retrofit코드 (& String에 name 변경)
-                            //검색 결과 저장 : prescripton 데이터 베이스에
-                            //MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(screen7camera.this);
-                            //SQLiteDatabase db = helper.getWritableDatabase();
 
-
-                            //db.execSQL("insert into searchlog (date, name, image) values(?,?,?)" ,new Object[]{date,name,image}  );
-                            //db.close();
 
                         });//업로드
 
@@ -197,10 +193,49 @@ public class screen7camera extends AppCompatActivity {
 
                                         //idi와 일치할 경우
                                         if(idi == 1){
+                                            thisPill = item.getDrug_name();
+                                            thisNum = item.getDose_num();
                                             result += "약물 이름 : " + item.getDrug_name() + "/복용 날짜 : " + item.getDose_day() + "\n\n";
                                         }
+
+
                                     }
                                     Log.d("알람으로 쓰기위해",result);
+                                    //전송 retrofit코드 (& String에 name 변경)
+                                    //검색 결과 저장 : prescripton 데이터 베이스에
+                                    //MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(screen7camera.this);
+
+
+                                    MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(getApplicationContext()); //context 뭐 넣어야하지..
+                                    SQLiteDatabase db = helper.getWritableDatabase(); //쓰기
+                                    int numPerDay = Integer.parseInt(thisNum);
+                                    int startTime = 0; // 하루에 먹어야하는 약의 양에 따라, 약을 먹을 시간을 설정(점심기준. 좀 이상하긴하다)
+                                    int between = 0;
+                                    switch(numPerDay){
+                                        case 1 :
+                                            startTime = 12; //점심만 먹을 때, 12시를 기준으로 1번.
+                                            break;
+                                        case 2 :
+                                            startTime = 10;
+                                            between = 8; //아침, 저녁만 먹을 때. 10시와 18시. 간격은 8
+                                            break;
+                                        case 3 :
+                                            startTime = 10;//아침, 점심, 저녁 세 번 먹을 때. 10시 14시 18시.
+                                            between = 4;
+                                            break;
+
+                                    }
+
+                                    for(int i=0; i<numPerDay; i++){
+                                        db.execSQL("insert into times (hour,minute,memo) values(?,?,?)",new String[]{Integer.toString(startTime),"00",thisPill});
+                                        startTime += between;
+                                    }
+                                    db.close();
+
+
+                                    //db.execSQL("insert into searchlog (date, name, image) values(?,?,?)" ,new Object[]{date,name,image}  );
+                                    //db.close();
+
                                     send.performClick();
                                 }else {
                                     Toast.makeText(getApplicationContext(),"연결은 되었으나", Toast.LENGTH_SHORT).show();
