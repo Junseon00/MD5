@@ -2,11 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="400dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/toprounded"
     android:layout_gravity="bottom"
-    android:orientation="vertical">
+    android:orientation="vertical"
+
+    tools:context=".Add_friend_search">
 
     <!-- 타이틀바 -->
+    <Button
+        android:id="@+id/query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="query"
+        android:text="검색" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,7 +72,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/resultView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="결과창TextView"
+                    android:textAlignment="center"
+                    android:textColor="@color/common"
+                    android:textSize="25dp" />
+
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 

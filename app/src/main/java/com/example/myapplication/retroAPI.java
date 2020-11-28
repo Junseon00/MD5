@@ -65,6 +65,7 @@ public interface retroAPI {
 
     );
 
+    //약 검색용
     @GET("prescription/")
     Call<List<Prescription>> get_pres();
 

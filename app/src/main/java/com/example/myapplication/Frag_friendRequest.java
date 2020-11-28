@@ -94,10 +94,11 @@ public class Frag_friendRequest extends Fragment {
         rv.setAdapter(adapter);
 
 
-
-
         return v;
         // Inflate the layout for this fragment
-        // return inflater.inflate(R.layout.fragment_frag_follower, container, false);
+
+        */
+        //이거 밑에꺼 빠뜨리면 빌드 안돼서 그냥 넣었습니다..(효원
+         return inflater.inflate(R.layout.fragment_frag_follower, container, false);
     }
 }
