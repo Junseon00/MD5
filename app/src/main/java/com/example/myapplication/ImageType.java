@@ -11,13 +11,15 @@ import okhttp3.MultipartBody;
 public class ImageType {
 
     public int id;
+    public String uid;
     //public JSONObject image;
     public MultipartBody.Part img;
 
 
-    public ImageType(int id, MultipartBody.Part img) {
+    public ImageType(int id, MultipartBody.Part img, String uid) {
         this.id = id;
         this.img = img;
+        this.uid = uid;
     }
 
 
@@ -37,6 +39,8 @@ public class ImageType {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void setUid(String uid) { this.uid = uid;}
 
     /*
     public JSONObject getImage() {

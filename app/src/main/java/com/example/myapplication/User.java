@@ -17,9 +17,6 @@ public class User {
     public String birth;
 
 
-
-
-
 //    public String id;
 //    public String pw;
 //    String hashedpw;
@@ -86,53 +83,4 @@ public class User {
         this.phone = phone;
     }
 
-
-
-
-
-
-
-//    public String getHashedpw() {
-//        return hashedpw;
-//    }
-//
-//    public void setHashedpw(String name) {
-//        this.hashedpw = hashedpw;
-//    }
-//
-
-//
-
-
-//    public String getOs() {
-//        return os;
-//    }
-//
-//    public void setOs(String os) {
-//        this.os = os;
-//    }
-//
-//    public String getModel() {
-//        return model;
-//    }
-//
-//    public void setModel(String model) {
-//        this.model = model;
-//    }
-//
-//    public String getUuid() {
-//        return uuid;
-//    }
-//
-//    public void setUuid(String uuid) {
-//        this.uuid = uuid;
-//    }
-
-//    public String getToken() {
-//        return token;
-//    }
-//
-//    public void setToken(String token) {
-//        this.token = token;
-//    }
 }

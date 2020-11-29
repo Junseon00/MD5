@@ -12,17 +12,15 @@ public class Prescription {
 
     public int idi;
     public String user_id;
-    public String doctor_number;
     public String drug_name;
-    public float dose_size;
-    public int dose_num;
-    public int dose_day;
+    public String dose_size;
+    public String dose_num;
+    public String dose_day;
 
 
-    public Prescription(int idi, String user_id, String doctor_number, String drug_name, float dose_size, int dose_num, int dose_day) {
+    public Prescription(int idi, String user_id, String drug_name, String dose_size, String dose_num, String dose_day) {
         this.idi = idi;
         this.user_id = user_id;
-        this.doctor_number = doctor_number;
         this.drug_name = drug_name;
         this.dose_size = dose_size;
         this.dose_num = dose_num;
@@ -42,23 +40,22 @@ public class Prescription {
     public int getIdi() {
         return idi;
     }
-    public String getDoctor_number(){
-        return doctor_number;
-    }
+
+    public String getUser_id() { return user_id; }
 
     public String getDrug_name(){
         return drug_name;
     }
 
-    public float getDose_size(){
+    public String getDose_size(){
         return dose_size;
     }
 
-    public int getDose_num(){
+    public String getDose_num(){
         return dose_num;
     }
 
-    public int getDose_day(){
+    public String getDose_day(){
         return dose_day;
     }
 

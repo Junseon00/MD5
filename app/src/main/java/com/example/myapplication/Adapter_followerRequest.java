@@ -30,9 +30,9 @@ public class Adapter_followerRequest extends RecyclerView.Adapter< Adapter_follo
     }
 
     //관리할 자료 리스트!
-    private ArrayList<Data_followerRequest> followerRequests;
+    private ArrayList<Data_friendRequest> followerRequests;
 
-    Adapter_followerRequest(ArrayList<Data_followerRequest> data_followerRequests){
+    Adapter_followerRequest(ArrayList<Data_friendRequest> data_followerRequests){
         this.followerRequests = data_followerRequests;
     }
 
@@ -40,7 +40,7 @@ public class Adapter_followerRequest extends RecyclerView.Adapter< Adapter_follo
     @Override
     public Adapter_followerRequest.RViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.follower_request_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.friend_request_item, parent, false);
 
         return new Adapter_followerRequest.RViewHolder(v);
     }
@@ -58,8 +58,7 @@ public class Adapter_followerRequest extends RecyclerView.Adapter< Adapter_follo
 
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //android.util.Log.d("udg Adapter_follower","버튼 클릭");
-                Intent intent = new Intent(button.getContext(),AddFollowerNameSet.class);
+                Intent intent = new Intent(button.getContext(), AddFriendNameSet.class);
                 v.getContext().startActivity(intent);
             }
         });
