@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<!-- 삭제 예정 -->
+<!-- 주현-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +9,7 @@
     android:background="@color/firstblue"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Frag_friendRequest">
+    tools:context=".Frag_dolvom">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,6 +18,7 @@
         android:background="#ffffff">
 
         <TextView
+            android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -25,7 +26,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="돌보미 신청자"
+            android:text="나의 돌보미"
             android:textColor="#000000"
             android:textSize="25dp" />
 
@@ -36,24 +37,26 @@
 
 
         <Button
+            android:id="@+id/button20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:background="@drawable/rounded_thirdblue"
             android:textColor="#ffffff"
-            android:text="모두\n수락"
+            android:text="추가\n하기"
+            android:onClick="addFriend"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="10dp"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:id="@+id/followerrequest"
+        android:id="@+id/follower"
         android:layout_height="match_parent" />
 </LinearLayout>

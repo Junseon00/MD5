@@ -1,7 +1,7 @@
-
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,32 +10,63 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class Screen11Follow extends AppCompatActivity {
+public class Frag_dolvom extends Fragment {
     RecyclerView rv;
     RecyclerView.LayoutManager lm;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen11_follow);
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
-        //리사이클러뷰를 일단 등록
-        rv = (RecyclerView)findViewById(R.id.rv1);
+    private String mParam1;
+    private String mParam2;
+
+    public Frag_dolvom() {}
+
+    public static Frag_dolvom newInstance(String param1, String param2) {
+        Frag_dolvom fragment = new Frag_dolvom();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_frag_dolvom, container, false);
+        //리사이클러뷰 등록
+        rv = (RecyclerView)v.findViewById(R.id.rv1);
         rv.setHasFixedSize(true);
-        lm=new LinearLayoutManager(this);
+        lm=new LinearLayoutManager(getActivity());
         rv.setLayoutManager(lm);
+
+        //자료들 가져오기
+        ArrayList<Data_friendRequest> datarequests = new ArrayList<>(); //넣을 리스트
 
         android.util.Log.d("udb screen11follow","리아시클러뷰 등록. 자료 읽어오기 시작");
 
 
         //자료들을 가져와 (혹은 만든다)
         ArrayList<Data_dolvom> datadolvoms = new ArrayList<>(); //넣을 리스트
+
         try {
-            MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(this);
+            MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(getActivity());
             SQLiteDatabase db = helper.getWritableDatabase();
             String createSQL = "CREATE TABLE IF NOT EXISTS follow (" + "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "follo INTEGER," +
@@ -69,18 +100,6 @@ public class Screen11Follow extends AppCompatActivity {
         Adapter_Dolvom adapter = new Adapter_Dolvom(datadolvoms);
         rv.setAdapter(adapter);
 
-
+        return v;
     }
-
-    public void toMainScreen(View v){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void addFriend(View v){
-        Intent intent = new Intent(this,SearchTest.class);
-        startActivity(intent);
-
-        overridePendingTransition(R.anim.slide,R.anim.slide);
-    }   //추가하기 버튼 누르면 검색창 띄우기
 }

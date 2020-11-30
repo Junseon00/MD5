@@ -20,7 +20,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Mission2"
@@ -55,7 +54,11 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".AddFollowingSearch"
-            android:theme="@android:style/Theme.Dialog" />
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name=".SearchTest"
+            android:theme="@android:style/Theme.Translucent"
+            />
 
 
         <service
