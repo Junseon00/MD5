@@ -33,7 +33,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="100dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -197,23 +196,25 @@
                         android:textSize="15sp" />
 
                     <Button
-                        android:id="@+id/btmy2"
+                        android:id="@+id/changePw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
                         android:ems="10"
                         android:text="바꾸기"
+                        android:onClick="changePw"
                         android:textSize="15sp"
                         android:textColor="@color/secondblue"
                         android:background="@drawable/roundbutton"/>
 
                     <Button
-                        android:id="@+id/btmy3"
+                        android:id="@+id/changePhone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
                         android:ems="10"
                         android:text="바꾸기"
+                        android:onClick="changePhone"
                         android:textSize="15sp"
                         android:textColor="@color/secondblue"
                         android:background="@drawable/roundbutton"/>
@@ -242,7 +243,7 @@
                 android:layout_width="200dp"
                 android:layout_height="50sp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/roundbutton"
                 android:text="홈으로"
                 android:textColor="@color/secondblue"
@@ -251,28 +252,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:onClick="home"
                 app:layout_constraintTop_toBottomOf="@id/layLine" />
-
-
-            <Button
-                android:id="@+id/changePw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:ems="10"
-                android:text="바꾸기"
-                android:onClick="changePw"
-                android:textSize="15sp" />
-
-            <Button
-                android:id="@+id/changePhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:ems="10"
-                android:text="바꾸기"
-                android:onClick="changePhone"
-                android:textSize="15sp" />
-
 
             <Button
                 android:background="@drawable/roundbutton"
@@ -286,7 +265,9 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button18" />
+                app:layout_constraintTop_toBottomOf="@id/button18"
+                android:layout_marginBottom="70dp"
+                />
 >>>>>>> 260d27ac4a8a4317b9f83ef36f0a5b9273710081
 
 

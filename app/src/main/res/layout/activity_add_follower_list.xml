@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- 삭제 예정 -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/firstblue"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Frag_following">
+    tools:context=".Frag_friendRequest">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +25,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="돌보미 신청 목록"
+            android:text="돌보미 신청자"
             android:textColor="#000000"
             android:textSize="25dp" />
 

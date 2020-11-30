@@ -40,7 +40,8 @@
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:background="@drawable/roundcorner"
-            android:text="추가하기" />
+            android:text="추가하기"
+            android:onClick="addFriend"/>
     </LinearLayout>
 
     <RelativeLayout

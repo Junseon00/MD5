@@ -57,8 +57,10 @@ public class Frag_friendRequest extends Fragment {
         rv.setLayoutManager(lm);
 
         //자료들 가져오기
-        ArrayList<Data_friendRequest> data_friendRequests = new ArrayList<>(); //넣을 리스트
-       /* try {
+        ArrayList<Data_friendRequest> datarequests = new ArrayList<>(); //넣을 리스트
+
+
+       try {
             MyDatabaseOpenHelper helper = new MyDatabaseOpenHelper(getActivity());
             SQLiteDatabase db = helper.getWritableDatabase();
             String createSQL = "CREATE TABLE IF NOT EXISTS follow (" + "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -76,13 +78,16 @@ public class Frag_friendRequest extends Fragment {
             while (cursor.moveToNext()) {
                 int _id;
                 String name;
+                //String phone;
+                // 폰번호 잠시 보류
                 int icon;
 
                 _id = cursor.getInt(0);
                 name = cursor.getString(1);
+                //phone=cursor.getString(2);
                 //icon은 생략
 
-                datafollower.add(new Data_follower(_id, name));//이미지는 안함★
+                datarequests.add(new Data_friendRequest(_id, name));//이미지는 안함★
             }
             db.close();
             android.util.Log.d("udb frag_follower.java","db작업 성공");
@@ -90,15 +95,11 @@ public class Frag_friendRequest extends Fragment {
             Log.d("udb frag_follower","db 작업 실패");}
 
         //리사이클러뷰 데이터 전달 및 adapter설정
-        Adapter_follower adapter = new Adapter_follower(datafollower);
+        Adapter_followerRequest adapter = new Adapter_followerRequest(datarequests);
         rv.setAdapter(adapter);
 
 
         return v;
         // Inflate the layout for this fragment
-
-        */
-        //이거 밑에꺼 빠뜨리면 빌드 안돼서 그냥 넣었습니다..(효원
-         return inflater.inflate(R.layout.fragment_frag_follower, container, false);
     }
 }

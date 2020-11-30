@@ -51,7 +51,8 @@ public class Adapter_followerRequest extends RecyclerView.Adapter< Adapter_follo
         Adapter_followerRequest.RViewHolder myViewHolder = (Adapter_followerRequest.RViewHolder) holder;
 
         myViewHolder.name.setText(followerRequests.get(position).getName());
-        myViewHolder.phone.setText(followerRequests.get(position).getPhone());
+        //myViewHolder.phone.setText(followerRequests.get(position).getPhone());
+        // 전화번호 보류
 
         //클릭이벤트
         Button button = ((Adapter_followerRequest.RViewHolder) holder).btn;
@@ -68,7 +69,5 @@ public class Adapter_followerRequest extends RecyclerView.Adapter< Adapter_follo
     public int getItemCount() {
         return followerRequests.size();
     }
-
-
 
 }

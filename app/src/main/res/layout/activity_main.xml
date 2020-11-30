@@ -87,10 +87,21 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/wbbutton"
                 android:onClick="alarm"
                 android:text="복용 시간 알람"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/buttonsocial"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/wbbutton"
+                android:onClick="dolvom"
+                android:text="내 돌보미"
                 android:textSize="25sp" />
 
             <Button

@@ -40,6 +40,7 @@
             android:background="@drawable/rounded_thirdblue"
             android:textColor="#ffffff"
             android:text="추가\n하기"
+            android:onClick="addFriend"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="10dp"

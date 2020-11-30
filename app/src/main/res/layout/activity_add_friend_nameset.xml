@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/popup">
+    android:layout_height="wrap_content">
 
     <!-- 타이틀바 -->
     <LinearLayout
@@ -28,7 +27,8 @@
         android:padding="25dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#eeeeee">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
     <View
         android:background="#66bdbdbd"
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="0dp" />
 
     <!-- 닫기 버튼 -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -129,7 +129,6 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/popup"
         >
 
         <Button
@@ -139,7 +138,7 @@
             android:layout_marginEnd="1dp"
             android:background="@drawable/bottomeleftrounded"
             android:gravity="center"
-            android:onClick="dideat"
+
             android:padding="16dp"
             android:text="확인"
             android:textColor="#70A9FF"
@@ -156,10 +155,11 @@
             android:layout_marginStart="1dp"
             android:background="@drawable/bottomrightrounded"
             android:gravity="center"
-            android:onClick="didnteat"
+
             android:padding="16dp"
             android:text="취소"
             android:textColor="#70A9FF"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button26"

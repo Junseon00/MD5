@@ -101,7 +101,6 @@ public class AddFollowingSearch extends AppCompatActivity {
         }
     }
 
-
 }
 
 // 검색 기능 미구현

@@ -75,4 +75,9 @@ public class Screen11Follow extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
+    public void addFriend(View v){
+        Intent intent = new Intent(this,AddFollowingSearch.class);
+        startActivity(intent);
+    }   //추가하기 버튼 누르면 검색창 띄우기
 }

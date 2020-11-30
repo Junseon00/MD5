@@ -14,13 +14,13 @@
             android:id="@+id/tab_Item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="팔로워" />
+            android:text="나의 돌보미" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_Item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="팔로잉" />
+            android:text="돌보미 신청" />
 
 
     </com.google.android.material.tabs.TabLayout>

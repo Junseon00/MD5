@@ -47,9 +47,6 @@ public class Screen11Social extends AppCompatActivity {
 
         for(int i =0;i<2;i++){tab.getTabAt(i).setIcon(images.get(i));}
 
-
-
-
     }
 
     public void toMainScreen(View v){
