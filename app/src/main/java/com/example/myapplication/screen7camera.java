@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.media.Image;
@@ -198,6 +199,9 @@ public class screen7camera extends AppCompatActivity {
                                             result += "약물 이름 : " + item.getDrug_name() + "/복용 날짜 : " + item.getDose_day() + "\n\n";
                                         }
 
+                                        //약물의 이름을 compare로 보냄ㄴㄴ
+                                       compare(thisPill);
+
 
                                     }
                                     Log.d("알람으로 쓰기위해",result);
@@ -322,7 +326,7 @@ public class screen7camera extends AppCompatActivity {
 
     }
 
-    /*
+
     //함수 설명
     //"A,B,C"형태로 약물 목록(A,B,C)을 string형식 파라미터로 전달해주면
     //쪼갠뒤 기존의 복용중인 약품과 둘씩 짝지음
@@ -345,6 +349,11 @@ public class screen7camera extends AppCompatActivity {
                     //실제상황이면 if  ※!a.equal(b)※ 필요 a!=b여야 비교하는 의미가 있지
                     //이제 a,b를 반복해서 서버로 보내면 된다.
                     Toast.makeText(this, "서버로 보낼 , 새로 인식한 a="+a+"복용중이던 b"+b, Toast.LENGTH_SHORT).show();
+
+                    //서버로 보내기
+                    //병용금기로 보내는 부분
+
+
                 }
             }
         }//end of cursor
@@ -352,7 +361,7 @@ public class screen7camera extends AppCompatActivity {
     }
 
 
-     */
+
 
 
     public String returnDate(){

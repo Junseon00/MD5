@@ -66,6 +66,7 @@
             android:background="#90F189FF"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:onClick="send"
             android:text="작성완료!" />
 
     </LinearLayout>

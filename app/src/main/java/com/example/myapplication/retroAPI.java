@@ -100,6 +100,12 @@ public interface retroAPI {
     @POST("user/")
     Call<User> regist_logs(@Body User user);
 
+
+    //미션업로드
+    @POST("mission/")
+    Call<DB_mission> post_missions(@Body DB_mission mission);
+
+
     //아래로는 정보바꾸기
 
     //1. 비밀번호 바꾸기
