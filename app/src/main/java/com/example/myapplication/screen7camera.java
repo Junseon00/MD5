@@ -51,7 +51,7 @@ public class screen7camera extends AppCompatActivity {
     Button send;
     Button takephoto;
 
-    private final String BASE_URL = "https://73b8ab351527.ngrok.io/";
+    private final String BASE_URL = "http://8923667aefd9.ngrok.io/";
     retroAPI imageApi;
 
     static int flag = 1;
@@ -69,7 +69,6 @@ public class screen7camera extends AppCompatActivity {
         send.setVisibility(View.INVISIBLE);
 
         initMyAPI(BASE_URL);
-
     }
 
     //retrofit 기동
@@ -119,7 +118,8 @@ public class screen7camera extends AppCompatActivity {
                 try{
                     Log.d("MYTAG", "지금 1 flag = "+flag);
                     Log.d("udb 서버에 send","try메시 쪽에는 들어옴");
-                    ////날짜, 약 이름, 찍은 이미지
+
+                    ////날짜, 약 이름, 찍은 이미지 포맷 바꾸는 부분
                     String date = returnDate();
                     String name = "default pill name";
                     Bitmap image = (Bitmap)data.getExtras().get("data");
@@ -138,24 +138,23 @@ public class screen7camera extends AppCompatActivity {
                     final int id1 = (int)(Math.random()*1000)+1;
                     Log.d("id1 정보", id1+"입니다");
 
-                    //맨처음 : 이미지를 서버로 보냄
+                    //맨처음 flag 1: 이미지를 서버로 보냄
                     if(flag==1){
-                        flag=11;
+                        flag=2;
                         Call<ImageType> call1 = imageApi.postImg(id1, body,"hyowon");
                         call1.enqueue(new Callback<ImageType>() {
 
                             @Override
                             public void onResponse(Call<ImageType> call, Response<ImageType> response) {
-                                Log.d("MYTAG", "일단.. 진입");
+                                Log.d("flag1", "진입");
                                 if (!response.isSuccessful()) {
-                                    android.util.Log.d("서버센드", "Status Code : " + response.code());
+                                    android.util.Log.d("flag1", "Status Code : " + response.code());
                                     Toast.makeText(getApplicationContext(), " 실패", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
 
-
+                                //서버에 올려진 이미지 받아오기
                                 ImageType posted = response.body();
-
                                 String content = "";
                                 content += "Id: " + posted.getId() + "\n";
                                 Toast.makeText(getApplicationContext(), content + " 가 업로드되었습니다", Toast.LENGTH_SHORT).show();
@@ -177,15 +176,15 @@ public class screen7camera extends AppCompatActivity {
                         //자동으로 클릭해줌
                         send.performClick();
 
-                        //두번째 : 고유한 아이디에 따라 prescription 데이터베이스에서 정보를 가져옴
-                    }else if(flag==11){
-                        flag=79;
+                        //두번째 flag2 : 고유한 아이디에 따라 prescription 데이터베이스에서 정보를 가져옴
+                    }else if(flag==2){
+                        flag=3;
                         Call<List<Prescription>> getCall = imageApi.get_pres();
                         getCall.enqueue(new Callback<List<Prescription>>() {
                             @Override
                             public void onResponse(Call<List<Prescription>> call, Response<List<Prescription>> response) {
                                 if(response.isSuccessful()){
-                                    Toast.makeText(getApplicationContext(),"2번째연결성공", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"flag2 진입", Toast.LENGTH_SHORT).show();
                                     List<Prescription> mList = response.body();
                                     String result ="0";
                                     for( Prescription item : mList){
@@ -248,10 +247,19 @@ public class screen7camera extends AppCompatActivity {
                             }
                             @Override
                             public void onFailure(Call<List<Prescription>> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(),"error2"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"flag2 error"+t.getMessage(), Toast.LENGTH_SHORT).show();
                                 Log.d("333","Fail msg : " + t.getMessage());
                             }
                         });
+
+                    }else if(flag==3){
+                        //여기서 병용 중복 방지 코드
+
+                        compare(thisPill);
+                        flag=4;
+
+
+
 
                     }else{
                         //빠져나가기...
@@ -282,6 +290,7 @@ public class screen7camera extends AppCompatActivity {
     }
 
 
+    //이미지 파일 포맷 변환 위한 함수
     private File savebitmap(Bitmap bmp) {
         String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
         OutputStream outStream = null;
@@ -290,22 +299,18 @@ public class screen7camera extends AppCompatActivity {
         if (file.exists()) {
             file.delete();
             file = new File(extStorageDirectory, "temp.png");
-
         }
-
         try {
             outStream = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.PNG, 100, outStream);
             outStream.flush();
             outStream.close();
-
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
         return file;
     }
-
 
     //base64 인코딩
     private String getStringFromBitmap(Bitmap bitmapPicture) {
@@ -321,9 +326,7 @@ public class screen7camera extends AppCompatActivity {
 
     //base64 디코딩(나중에 지울거임)
     public static String getBase64decode(String content){
-
         return new String(Base64.decode(content, 0));
-
     }
 
 
@@ -350,9 +353,43 @@ public class screen7camera extends AppCompatActivity {
                     //이제 a,b를 반복해서 서버로 보내면 된다.
                     Toast.makeText(this, "서버로 보낼 , 새로 인식한 a="+a+"복용중이던 b"+b, Toast.LENGTH_SHORT).show();
 
+
+
+
                     //서버로 보내기
                     //병용금기로 보내는 부분
-
+                    //일단 데이터베이스가 없는 거같아서..
+//                    Call<DB_DrugRelation1> call2 = imageApi.get_drugRel();
+//                    call2.enqueue(new Callback<DB_DrugRelation1>() {
+//
+//                        @Override
+//                        public void onResponse(Call<DB_DrugRelation1> call, Response<DB_DrugRelation1> response) {
+//                            Log.d("flagCompare", "진입");
+//                            if (!response.isSuccessful()) {
+//                                android.util.Log.d("flagCompare", "Status Code : " + response.code());
+//                                Toast.makeText(getApplicationContext(), " 실패", Toast.LENGTH_SHORT).show();
+//                                return;
+//                            }
+//                            List<DB_DrugRelation1> mList = response.body();
+//
+//                            for( DB_DrugRelation1 item : mList){
+//                                String name = item.getDrug_name();
+//                                int idi = item.getIdi();
+//                                //idi와 일치할 경우
+//                                //여기 밑에서i랑 j랑 비교
+//                                if(idi == 1){
+//                                    thisPill = item.getDrug_name();
+//                                    thisNum = item.getDose_num();
+//                                    result += "약물 이름 : " + item.getDrug_name() + "/복용 날짜 : " + item.getDose_day() + "\n\n";
+//                                }
+//                            }
+//                        }
+//                        @Override
+//                        public void onFailure(Call<DB_DrugRelation1> call, Throwable t) {
+//                            Log.d("MYTAG", t.getMessage()+t.getLocalizedMessage());
+//                            Toast.makeText(getApplicationContext(), "error1 연결은 됐지만..."+t.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    });//업로드
 
                 }
             }

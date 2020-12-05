@@ -70,6 +70,9 @@ public interface retroAPI {
     Call<List<Prescription>> get_pres();
 
 
+    @GET("drugrelation1/")
+    Call<List<Prescription>> get_drugRel();
+
     //getPres(@Query("idi") int idi, @Query("user_id") String user_id, @Query("drug_name") String drug_name, @Query("dose_size") String dose_size, @Query("dose_num") String dose_num, @Query("dose_day") String dose_day);
 
 
