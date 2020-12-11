@@ -10,13 +10,16 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/toprounded"
+        >
         <TextView
-            android:text="나의 돌보미로 추가할까요?"
-            android:textSize="20sp"
+            android:text="돌보미를 추가할까요?"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="25sp"
             android:textColor="#fff"
             android:gravity="center"
-            android:background="@drawable/toprounded"
             android:layout_width="match_parent"
             android:layout_height="40dp" />
     </LinearLayout>
@@ -86,7 +89,7 @@
             android:gravity="center"
             android:text="돌보미의 별명을 등록해주세요."
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="250dp"
@@ -142,7 +145,7 @@
             android:padding="16dp"
             android:text="확인"
             android:textColor="#70A9FF"
-            android:textSize="15sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button12"
             app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +162,7 @@
             android:padding="16dp"
             android:text="취소"
             android:textColor="#70A9FF"
-            android:textSize="15sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button26"

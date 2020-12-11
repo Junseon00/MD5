@@ -15,11 +15,11 @@
             android:id="@+id/textView26"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/secondblue"
+            android:background="@color/thirdblue"
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="내게 온 미션 목록"
+            android:text="받은 미션 목록"
             android:textColor="#FFFFFF"
             android:textSize="25sp" />
 
@@ -31,8 +31,9 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="sender 에게서 온 미션 목록 입니다."
-            android:textSize="20sp" />
+            android:text="돌보미 sender 에게서 온 미션 목록 입니다."
+            android:textSize="20sp"
+            android:textColor="#000"/>
 
         <Button
             android:id="@+id/button22"
@@ -40,6 +41,9 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:text="돌아가기"
+            android:textSize="25sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_alignParentBottom="true" />
 
         <LinearLayout
@@ -54,14 +58,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="10/9" />
+                android:text="10/9"
+                android:textSize="18sp"
+                android:textColor="@color/thirdblue"/>
 
             <TextView
                 android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="10자 미리" />
+                android:text="10자 미리"
+                android:textSize="18sp"
+                />
 
             <Button
                 android:id="@+id/button24"
@@ -69,16 +77,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_weight="0"
-                android:background="@color/thirdblue"
-                android:text="완수" />
+                android:background="@drawable/rounded_thirdblue"
+                android:text="완수"
+                android:textSize="18sp"/>
 
             <Button
                 android:id="@+id/button25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:background="@color/gray"
-                android:text="포기" />
+                android:background="@drawable/rounded_gray"
+                android:text="포기"
+                android:textSize="18sp"/>
         </LinearLayout>
     </RelativeLayout>
 
