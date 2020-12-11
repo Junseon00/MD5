@@ -10,13 +10,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/toprounded">
 
         <TextView
             android:id="@+id/alarmlist"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/toprounded"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="복용 약품 기록"
             android:textColor="#fff"
@@ -43,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="알람 시간"
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:textColor="#000000"
@@ -52,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="메모"
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:textColor="#000000"
@@ -61,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="복용 여부"
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -71,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="20dp"
-        android:textSize="15sp">
+        android:textSize="18sp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -84,7 +86,7 @@
         android:layout_height="wrap_content"
         android:text="복용 내역이 없습니다."
         android:layout_marginBottom="15dp"
-        android:textSize="15sp"/>
+        android:textSize="18sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"

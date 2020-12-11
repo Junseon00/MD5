@@ -11,13 +11,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/toprounded">
 
         <TextView
             android:id="@+id/alarmlist"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/toprounded"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="약품 검색 기록 (상세)"
             android:textColor="#fff"
@@ -38,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0"
             android:text="검색 날짜"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textColor="#000000" />
 
         <TextView
@@ -48,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#ffff"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:text="yyyy-mm-dd" />
 
     </LinearLayout>
@@ -69,7 +71,7 @@
             android:layout_weight="0"
             android:textColor="#000000"
             android:text="복용 완료"
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/due"
@@ -77,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#ffff"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:text="yyyy-mm-dd" />
 
     </LinearLayout>
@@ -99,14 +101,14 @@
             android:layout_weight="0"
             android:textColor="#000000"
             android:text="순서번호 "
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:background="#ffff"
             android:text="n" />
 
@@ -117,7 +119,7 @@
             android:layout_weight="0"
             android:textColor="#000000"
             android:text=" 복용여부 "
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/taking"
@@ -127,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="복용중/복용끝"
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
 
     </LinearLayout>
 
@@ -160,7 +162,7 @@
         android:textColor="#000000"
         android:text="검색된 약품 목록"
         android:gravity="center"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -175,7 +177,7 @@
         android:text="\n여기에 의약품 목록이 표시됩니다\n"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textSize="15sp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/textView27"
@@ -185,7 +187,7 @@
         android:textColor="#000000"
         android:text="주의 사항"
         android:gravity="center"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:layout_marginTop="10dp"
         android:background="#eeeeee"
         android:layout_marginLeft="10dp"
@@ -198,7 +200,7 @@
         android:layout_height="wrap_content"
         android:background="#ffff"
         android:text="\n주의 사항 없음\n"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -220,7 +222,7 @@
             android:padding="16dp"
             android:text="닫기"
             android:background="@drawable/bottomrounded"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
 
     </LinearLayout>
