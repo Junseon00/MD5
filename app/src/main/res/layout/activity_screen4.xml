@@ -13,7 +13,8 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fourthblue">
+        android:background="@color/fourthblue"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView15"
@@ -56,8 +57,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="15dp"
-
-            android:buttonTint="@color/thirdblue" />
+            />
 
         <TextView
             android:id="@+id/tv"

@@ -39,6 +39,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:timePickerMode="spinner"
+
+                android:background="#fff"
+                android:numbersSelectorColor="#000"
+                android:numbersTextColor="#000"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
