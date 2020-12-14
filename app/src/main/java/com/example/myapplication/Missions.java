@@ -21,7 +21,7 @@ public class Missions extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent intent1 = new Intent(this, Screen11Social.class);
+        Intent intent1 = new Intent(this, Screen11Follow.class);
         startActivity(intent1);
     }
 

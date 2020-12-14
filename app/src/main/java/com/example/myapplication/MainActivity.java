@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void dolvom(View v){
-        Intent intent=new Intent(this,Screen11Social.class );
+        Intent intent=new Intent(this,Screen11Follow.class );
         startActivity(intent);
 
     }
