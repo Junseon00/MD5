@@ -78,7 +78,7 @@ public class Screen11Follow extends AppCompatActivity {
     }
 
     public void addFriend(View v){
-        Intent intent = new Intent(this,SearchTest.class);
+        Intent intent = new Intent(this,AddFollowingSearch.class);
         startActivity(intent);
 
         overridePendingTransition(R.anim.slide,R.anim.slide);

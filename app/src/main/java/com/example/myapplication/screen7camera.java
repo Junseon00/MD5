@@ -417,4 +417,8 @@ public class screen7camera extends AppCompatActivity {
     }
 
 
+    public void back(View view) {
+        Intent intent1 = new Intent(this,screen3.class);
+        startActivity(intent1);
+    }
 }

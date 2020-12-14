@@ -14,13 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Screen11Follow">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Screen11Follow"/>
         <activity
             android:name=".Mission2"
             android:theme="@android:style/Theme.Dialog" />
@@ -32,7 +26,7 @@
             android:name=".mission_popup"
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Missions" />
-        <activity android:name=".Screen11Social"></activity>
+        <activity android:name=".Screen11Social"/>
         <activity
             android:name=".LogPopup"
             android:theme="@android:style/Theme.Dialog" />
@@ -66,14 +60,23 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".screen5" />
+        <activity android:name=".screen5"/>
+
         <activity android:name=".screen4" />
+
         <activity android:name=".screen3" />
+
+
         <activity android:name=".screen2register" />
         <activity android:name=".screen1login"></activity>
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/firstblue"
-    tools:context=".MainActivity">
+    tools:context=".Missions">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,11 +15,11 @@
             android:id="@+id/textView26"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/thirdblue"
+            android:background="@color/deepblue"
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="받은 미션 목록"
+            android:text="받은 미션"
             android:textColor="#FFFFFF"
             android:textSize="25sp" />
 
@@ -39,12 +39,14 @@
             android:id="@+id/button22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-1dp"
             android:background="#ffffff"
-            android:text="돌아가기"
-            android:textSize="25sp"
+            android:onClick="back"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_alignParentBottom="true" />
+            android:text="돌아가기"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

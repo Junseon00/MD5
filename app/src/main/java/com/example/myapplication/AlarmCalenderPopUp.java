@@ -48,7 +48,7 @@ public class AlarmCalenderPopUp extends Activity {
         String date = intent.getStringExtra("date");
 
         //타이틀 바꾸기
-        title.setText(date+"의 약품 복용 기록");
+        title.setText(date+"\n약품 복용 기록");
 
 
         //리사이클러뷰

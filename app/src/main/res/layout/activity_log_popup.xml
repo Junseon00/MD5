@@ -51,7 +51,8 @@
             android:layout_weight="1"
             android:background="#ffff"
             android:textSize="18sp"
-            android:text="yyyy-mm-dd" />
+            android:text="yyyy-mm-dd"
+            android:paddingStart="10dp"/>
 
     </LinearLayout>
 
@@ -80,7 +81,8 @@
             android:layout_weight="1"
             android:background="#ffff"
             android:textSize="18sp"
-            android:text="yyyy-mm-dd" />
+            android:text="yyyy-mm-dd"
+            android:paddingStart="10dp"/>
 
     </LinearLayout>
 
@@ -110,7 +112,8 @@
             android:layout_weight="1"
             android:textSize="18sp"
             android:background="#ffff"
-            android:text="n" />
+            android:text="n"
+            android:paddingStart="10dp"/>
 
         <TextView
             android:id="@+id/tvtaking"
@@ -118,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:textColor="#000000"
-            android:text=" 복용여부 "
+            android:text=" 복용상태 "
             android:textSize="18sp"/>
 
         <TextView
@@ -129,7 +132,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="복용중/복용끝"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:paddingStart="10dp"/>
 
     </LinearLayout>
 
@@ -177,7 +181,9 @@
         android:text="\n여기에 의약품 목록이 표시됩니다\n"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textSize="18sp"/>
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/textView27"
@@ -186,6 +192,7 @@
         android:layout_height="20dp"
         android:textColor="#000000"
         android:text="주의 사항"
+        android:layout_marginBottom="5dp"
         android:gravity="center"
         android:textSize="18sp"
         android:layout_marginTop="10dp"
@@ -204,6 +211,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:gravity="center_horizontal"
         />
 
     <LinearLayout

@@ -36,7 +36,6 @@ public class screen5 extends AppCompatActivity {
         timepicker=(TimePicker) findViewById(R.id.timePicker);
         memo = (EditText)findViewById(R.id.memo);
 
-
     }
 
 

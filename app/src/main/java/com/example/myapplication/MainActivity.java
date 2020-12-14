@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     public void toSearchLog(View v){
         Intent intent = new Intent(this,Screen10SearchLog.class);
         startActivity(intent);
