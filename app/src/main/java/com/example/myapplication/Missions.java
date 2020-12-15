@@ -25,6 +25,11 @@ public class Missions extends AppCompatActivity {
         startActivity(intent1);
     }
 
+    public void finish(View view){
+        Intent intent2 = new Intent(this, dolvon_popup.class);
+        startActivity(intent2);
+    }
+
 
 
 }

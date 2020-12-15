@@ -31,7 +31,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="돌보미 sender 에게서 온 미션 목록 입니다."
+            android:text="돌보미 김보안 님에게서 온 미션 목록 입니다."
             android:textSize="20sp"
             android:textColor="#000"/>
 
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="10자 미리"
+                android:text="약 먹었니?"
                 android:textSize="18sp"
                 />
 
@@ -81,6 +81,7 @@
                 android:layout_weight="0"
                 android:background="@drawable/rounded_thirdblue"
                 android:text="완수"
+                android:onClick="finish"
                 android:textSize="18sp"/>
 
             <Button

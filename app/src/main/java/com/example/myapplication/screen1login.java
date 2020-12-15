@@ -69,67 +69,77 @@ public class screen1login extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void onClick(View v) {
-        if (v == btn_login) {
-            final String id = et_id.getText().toString();
-            final String pass = et_pass.getText().toString();
+    public void onClick(View v){
 
-            if (TextUtils.isEmpty(id)) {
-                et_id.setError("id error");
-            }
-            if (TextUtils.isEmpty(pass)) {
-                et_pass.setError("pwpw error pw");
-            }
-
-            if (!TextUtils.isEmpty(id) && !TextUtils.isEmpty(pass)) {
-                Call<List<User>> getCall = logAPI.get_logs();
-                getCall.enqueue(new Callback<List<User>>() {
-                    @Override
-                    public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "연결성공", Toast.LENGTH_SHORT).show();
-                            List<User> userList = response.body();
-
-                            for (int i = 0; i < userList.size(); i++) {
-                                User a = userList.get(i);
-                                if (id.equals(a.getId()) && pass.equals(a.getPassword())) {
-                                    Toast.makeText(getApplicationContext(), a.getId()+ "님, 환영합니다!", Toast.LENGTH_SHORT).show();
-                                    i = userList.size() + 1;
-                                    Intent intent = new Intent(screen1login.this, MainActivity.class);
-                                    startActivity(intent);
-
-                                } else if (id.equals(a.getId()) && !pass.equals(a.getPassword())) {
-                                    Toast.makeText(getApplicationContext(), "비밀번호 틀림", Toast.LENGTH_SHORT).show();
-                                    i = userList.size() + 1;
-                                }
-
-
-                                if (i == userList.size() - 1) {
-                                    Toast.makeText(getApplicationContext(), "일치하는 아이디가 없습니다", Toast.LENGTH_SHORT).show();
-                                }
-
-                            }
-
-
-                        } else {
-                            Toast.makeText(getApplicationContext(), "연결은 되었으나", Toast.LENGTH_SHORT).show();
-                            android.util.Log.d(TAG, "Status Code : " + response.code() + response.body());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<User>> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "error2", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "Fail msg : " + t.getMessage());
-                    }
-
-                });
-
-
-            }
+        if(v==btn_login){
+            Intent intent = new Intent(screen1login.this, MainActivity.class);
+            startActivity(intent);
+            Toast.makeText(getApplicationContext(), "KimEwha"+" 님, 오늘 하루도 건강하신가요?", Toast.LENGTH_SHORT).show();
         }
 
     }
+
+//    public void onClick(View v) {
+//        if (v == btn_login) {
+//            final String id = et_id.getText().toString();
+//            final String pass = et_pass.getText().toString();
+//
+//            if (TextUtils.isEmpty(id)) {
+//                et_id.setError("id error");
+//            }
+//            if (TextUtils.isEmpty(pass)) {
+//                et_pass.setError("pwpw error pw");
+//            }
+//
+//            if (!TextUtils.isEmpty(id) && !TextUtils.isEmpty(pass)) {
+//                Call<List<User>> getCall = logAPI.get_logs();
+//                getCall.enqueue(new Callback<List<User>>() {
+//                    @Override
+//                    public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+//                        if (response.isSuccessful()) {
+//                            Toast.makeText(getApplicationContext(), "연결성공", Toast.LENGTH_SHORT).show();
+//                            List<User> userList = response.body();
+//
+//                            for (int i = 0; i < userList.size(); i++) {
+//                                User a = userList.get(i);
+//                                if (id.equals(a.getId()) && pass.equals(a.getPassword())) {
+//                                    Toast.makeText(getApplicationContext(), a.getId()+ "님, 환영합니다!", Toast.LENGTH_SHORT).show();
+//                                    i = userList.size() + 1;
+//                                    Intent intent = new Intent(screen1login.this, MainActivity.class);
+//                                    startActivity(intent);
+//
+//                                } else if (id.equals(a.getId()) && !pass.equals(a.getPassword())) {
+//                                    Toast.makeText(getApplicationContext(), "비밀번호 틀림", Toast.LENGTH_SHORT).show();
+//                                    i = userList.size() + 1;
+//                                }
+//
+//
+//                                if (i == userList.size() - 1) {
+//                                    Toast.makeText(getApplicationContext(), "일치하는 아이디가 없습니다", Toast.LENGTH_SHORT).show();
+//                                }
+//
+//                            }
+//
+//
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "연결은 되었으나", Toast.LENGTH_SHORT).show();
+//                            android.util.Log.d(TAG, "Status Code : " + response.code() + response.body());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<List<User>> call, Throwable t) {
+//                        Toast.makeText(getApplicationContext(), "error2", Toast.LENGTH_SHORT).show();
+//                        Log.d(TAG, "Fail msg : " + t.getMessage());
+//                    }
+//
+//                });
+//
+//
+//            }
+//        }
+//
+//    }
 }
 
 

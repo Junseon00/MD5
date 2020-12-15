@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -33,6 +35,8 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Missions" />
         <activity android:name=".Screen11Social"/>
+        <activity android:name=".Camera_Popup"/>
+        <activity android:name=".dolvon_popup"/>
         <activity
             android:name=".LogPopup"
             android:theme="@android:style/Theme.Dialog" />
@@ -48,6 +52,9 @@
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
         <activity android:name=".screen7camera" />
         <activity android:name=".screen6" />
+        <activity android:name=".alarm_popup" />
+        <activity android:name=".GoodBye" />
+        <activity android:name=".answer_popup" />
 
         <activity
             android:name=".AddFriendNameSet"

@@ -97,6 +97,19 @@ public class screen2register extends AppCompatActivity implements View.OnClickLi
         regApi = retrofit.create(retroAPI.class);
     }
 
+    public void onClick(View v){
+
+        if(v==btn_register){
+            Intent intent = new Intent(screen2register.this, screen1login.class);
+            startActivity(intent);
+            Toast.makeText(getApplicationContext(), "KimEwha"+" 님, 가입을 환영합니다!", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+    }
+
+    /*
     public void onClick(View v) {
                 if (v == btn_register) {
                     final String id = et_id.getText().toString();
@@ -130,7 +143,7 @@ public class screen2register extends AppCompatActivity implements View.OnClickLi
             boolean num = false;
             boolean passError = false;
 
-            /*
+
             for(int i=0; i<passCheck.length ; i++){
 
 
@@ -174,7 +187,7 @@ public class screen2register extends AppCompatActivity implements View.OnClickLi
             }
 
 
-             */
+
 
 
 
@@ -228,6 +241,8 @@ public class screen2register extends AppCompatActivity implements View.OnClickLi
 
         }
     }
+
+    */
 }
 
 

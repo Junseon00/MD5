@@ -69,6 +69,13 @@ public class Adapter_Dolvom extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         });
 
+        button1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(button1.getContext(),answer_popup.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
         button3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Log.d("udg Adapter_Dolvom","버튼 클릭");

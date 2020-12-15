@@ -87,9 +87,10 @@ public class MainActivity extends AppCompatActivity {
 
     //로그아웃
     public void logout(View v) {
-        Intent it = new Intent(this, screen1login.class);
+        Intent it = new Intent(this, GoodBye.class);
         startActivity(it);
     }
+
 
 
     //**효원 작업중 부분**//

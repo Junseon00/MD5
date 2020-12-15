@@ -49,6 +49,7 @@
             android:textColor="@color/thirdblue"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
+            android:onClick="activity"
             android:background="@drawable/rounded_white"
             android:text="활동\n내역"
             />
