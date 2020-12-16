@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -102,8 +103,8 @@ public class screen7camera extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         flag=1;
         super.onActivityResult(requestCode, resultCode, data);
-        iv= (ImageView)findViewById(R.id.iv);
-        iv.setImageURI(data.getData());
+        //iv= (ImageView)findViewById(R.id.iv);
+        //iv.setImageURI(data.getData());
         //getData로 이미지 URL불러오기.
 
         //서버로 보낼 수 있게 버튼 활성화

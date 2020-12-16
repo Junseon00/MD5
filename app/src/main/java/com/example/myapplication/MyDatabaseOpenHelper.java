@@ -46,7 +46,7 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
                 ");");
 
         db.execSQL("insert into prescription (taking,pills,date,due,warning) values(?,?,?,?,?)",new String[]{
-        "복용중","항히스타민제","2020-09-11","2020-09-12","안전"});
+        "복용중","유니온케토롤락주","2020-09-11","2020-09-12","안전"});
 
 
     }

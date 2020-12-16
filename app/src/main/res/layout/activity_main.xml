@@ -45,7 +45,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="30dp"
                 android:autoSizeTextType="uniform"
-                android:text="MD5님,"
+                android:text="kimEwha 님,"
                 android:textColor="#0D173D"
                 android:textSize="25sp" />
 
